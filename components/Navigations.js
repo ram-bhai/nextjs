@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -15,7 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import HomeIcon from '@mui/icons-material/Home';
 import MailIcon from '@mui/icons-material/Mail';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuItem from '@mui/material/MenuItem';
@@ -26,6 +27,11 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded';
 import Avatar from '@mui/material/Avatar';
 import logo from "../public/images/HORIZON FREE.png";
 
@@ -327,13 +333,12 @@ const Navigations = () => {
             style={{ marginRight: "12px" }}
           />
           <IconButton onClick={handleDrawerClose}>
-
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <CloseIcon style={{ fill: '#2B3674' }} />}
           </IconButton>
         </DrawerHeader>
 
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Dashbboard', 'NFT Marketplace', 'Tables', 'Kanban','Profile','Signin'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -349,9 +354,12 @@ const Navigations = () => {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {[<HomeIcon />, <ShoppingCartOutlinedIcon />, 
+                  <BarChartRoundedIcon />,<DashboardRoundedIcon/>,
+                  <PersonRoundedIcon/>,<HttpsRoundedIcon/>][index]}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                
               </ListItemButton>
             </ListItem>
           ))}
