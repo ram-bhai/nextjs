@@ -21,8 +21,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Divider from '@mui/material/Divider';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -32,8 +32,9 @@ import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded';
-import Avatar from '@mui/material/Avatar';
+import { useRouter } from 'next/router'
 import logo from "../public/images/HORIZON FREE.png";
+import profile from "../public/images/profile.png";
 
 const drawerWidth = 220;
 
@@ -105,11 +106,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '20px',
-  background:'#eaeef7',
-  height:'40px',
-  marginRight: theme.spacing(2),
-  margin: 0,
-  marginTop:'10px',
+  background: '#eaeef7',
+  height: '40px',
+  marginTop: '7px',
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
@@ -141,8 +140,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
 const Navigations = () => {
+  const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -218,8 +217,20 @@ const Navigations = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon style={{ fill: '#2B3674' }} />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search"
+            inputProps={{ 'aria-label': 'search' }}
+            style={{ color: '#2B3674' }}
+          />
+        </Search>
+      </MenuItem>
+      <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-            <MailIcon />
+          <MailIcon />
         </IconButton>
         <p>Messages</p>
       </MenuItem>
@@ -229,7 +240,7 @@ const Navigations = () => {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-            <NotificationsNoneIcon />
+          <NotificationsNoneIcon />
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
@@ -241,15 +252,60 @@ const Navigations = () => {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Image
+            src={profile}
+            alt={"Thumbnail-alt"}
+            width={30}
+            height={30}
+            style={{ marginRight: "15px", borderRadius: "50%" }}
+          />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
 
+  const routes = [
+    {
+      id: 1,
+      label: 'Dashboard',
+      icon: HomeIcon,
+      path: '/'
+    },
+    {
+      id: 2,
+      label: 'NFT Marketplace',
+      icon: ShoppingCartOutlinedIcon,
+      path: '/about'
+    },
+    {
+      id: 3,
+      label: 'Tables',
+      icon: BarChartRoundedIcon,
+      path: '/contact'
+    },
+    {
+      id: 4,
+      label: 'Kanban',
+      path: '/register',
+      icon: DashboardRoundedIcon
+    },
+    {
+      id: 5,
+      label: 'Profile',
+      path: '/register',
+      icon: PersonRoundedIcon
+    },
+    {
+      id: 6,
+      label: 'Sign In',
+      path: '/register',
+      icon: HttpsRoundedIcon
+    }
+  ];
+
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'relative' }}>
       <AppBar position="fixed" open={open} elevation={0} >
         <Toolbar>
           <IconButton
@@ -269,12 +325,13 @@ const Navigations = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, 
-                      background: '#fff', 
-                      borderRadius: '25px', 
-                      marginTop: '5px',
-                      justifyContent:'center'
-                       }}>
+          <Box sx={{
+            display: { xs: 'none', md: 'flex' },
+            background: '#fff',
+            borderRadius: '25px',
+            marginTop: '7px',
+            justifyContent: 'center'
+          }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon style={{ fill: '#2B3674' }} />
@@ -282,19 +339,19 @@ const Navigations = () => {
               <StyledInputBase
                 placeholder="Search"
                 inputProps={{ 'aria-label': 'search' }}
-                style={{ color: '#2B3674', marginTop: '5px' }}
+                style={{ color: '#2B3674' }}
               />
             </Search>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
+              <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
             </IconButton>
 
             <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-                <DarkModeIcon style={{ fill: '#AEA3D0' }}/>
+              <DarkModeIcon style={{ fill: '#AEA3D0' }} />
             </IconButton>
 
             <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-                <InfoOutlinedIcon style={{ fill: '#AEA3D0' }}/>
+              <InfoOutlinedIcon style={{ fill: '#AEA3D0' }} />
             </IconButton>
             <IconButton
               size="large"
@@ -304,8 +361,14 @@ const Navigations = () => {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit">
-              <Avatar  src="../public/images/profile.png"/>
-              </IconButton>
+              <Image
+                src={profile}
+                alt={"Thumbnail-alt"}
+                width={30}
+                height={30}
+                style={{ marginRight: "15px", borderRadius: "50%" }}
+              />
+            </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -336,34 +399,36 @@ const Navigations = () => {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <CloseIcon style={{ fill: '#2B3674' }} />}
           </IconButton>
         </DrawerHeader>
-
-        <List>
-          {['Dashbboard', 'NFT Marketplace', 'Tables', 'Kanban','Profile','Signin'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+        <Divider />
+        <React.Fragment>
+          <List>
+            {routes.map((item) => (
+              <ListItem key={item.id} disablePadding sx={{ display: 'block' }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
                   }}
+
                 >
-                  {[<HomeIcon />, <ShoppingCartOutlinedIcon />, 
-                  <BarChartRoundedIcon />,<DashboardRoundedIcon/>,
-                  <PersonRoundedIcon/>,<HttpsRoundedIcon/>][index]}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <item.icon />
+                  </ListItemIcon>
+                  <ListItemText primary={item.label} sx={{ opacity: open ? 1 : 0 }}>
+                    <Link href={item.path}></Link>
+                    </ListItemText>
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </React.Fragment>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
