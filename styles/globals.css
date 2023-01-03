@@ -20,3 +20,12 @@ body {
     background: #eaeef7 !important;
     min-height: 50px !important;
 }
+
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active {
+    color: rgb(1 8 70 / 87%);
+}
+
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active .MuiTableSortLabel-icon {
+    opacity: 1;
+    color: rgb(1 8 70 / 87%);
+}
