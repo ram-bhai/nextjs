@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import Typography from '@mui/material/Typography';
+import bg from '../public/images/signin-image.png'
 
 function Copyright(props) {
     return (
@@ -38,8 +39,7 @@ const SignIn = () => {
     };
 
     return (
-        <Grid container component="main" sx={{ height: '100vh' }}>
-
+        <Grid container component="main" sx={{ height: '100vh'}}>
             <Grid item xs={12} sm={8} md={5} >
                 <ArrowBackIosOutlinedIcon style={{ fill: '#2B3674' }} />
                 <Typography style={{ color: '#2B3674', height: '1px' }}>
@@ -113,7 +113,9 @@ const SignIn = () => {
                 sm={4}
                 md={7}
                 sx={{
-                    backgroundImage: 'url(https://source.unsplash.com/random)',
+                    // backgroundImage: 'url(https://source.unsplash.com/random)',
+                    backgroundImage: `url(${bg.src})`, width: '100%',
+                    height: '100%',
                     backgroundRepeat: 'no-repeat',
                     backgroundColor: (t) =>
                         t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

@@ -1,4 +1,43 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Image from 'next/image';
+import IconButton from '@mui/material/IconButton';
+import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
+import flag from "../public/images/flag.png";
+import {styled} from '@mui/material/styles';
+
+
+
+const Responsive = styled("Box")(({theme})=>({
+  [theme.breakpoints.up('xs')]:{
+    height:'20px',
+    width:'50px'
+  },
+  [theme.breakpoints.up('sm')]:{
+    height:'40px',
+    width:'100px'
+  },
+  [theme.breakpoints.up('md')]:{
+    height:'60px',
+    width:'150px'
+  },
+  [theme.breakpoints.up('lg')]:{
+    height:'80px',
+    width:'200px'
+  },
+  [theme.breakpoints.up('xl')]:{
+    height:'100px',
+    width:'250px'
+  },
+
+}));
+
 
 export default function Home() {
   return (
@@ -9,9 +48,117 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/HORIZON FREE.png" />
       </Head>
-      <div>
-        <h1>Hello world</h1>
-      </div>
+
+
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2), }}>
+        <Grid container rowSpacing={0.5} >
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+              <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%',marginRight:'20px' }}>
+                <IconButton>
+                  <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
+                </IconButton>
+              </div>
+              <div style={{ marginLeft: '15px' }}>
+                <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
+                  Earnings
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    $350.4
+                  </Typography>
+                </Typography>
+              </div>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+              <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%' }}>
+                <IconButton>
+                  <AttachMoneyIcon style={{ fill: "#4318FF" }} />
+                </IconButton>
+              </div>
+              <div >
+                <Typography variant="caption" style={{ color: '#A3AED0', marginLeft: '15px' }} noWrap>
+                  Spend this month
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    $642.39
+                  </Typography>
+                </Typography>
+              </div>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', 
+            display: 'flex', justifyContent: 'start', textAlign: 'start', alignItems: 'start',}}>
+              <div style={{marginLeft:'15px'}}>
+                <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
+                  Sales
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    $574.34
+                  </Typography>
+                  <div style={{display:'flex'}}>
+                  <Typography variant = "body2" style={{ color: '#05CD99' }}>
+                    +23%
+                  </Typography>
+                  <Typography variant = "body2" style={{ color: '#A3AED0' }}>
+                    since last month 
+                  </Typography>
+                  </div>
+                </Typography>
+              </div>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+              <div >
+                <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
+                  Your balance
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    $1,000
+                  </Typography>
+                </Typography>
+              </div>
+              <Image src={flag} alt="flag" style={{ marginLeft: '15px' }} />
+              <IconButton>
+                <ExpandMoreIcon />
+              </IconButton>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+              <div style={{ background: '#20A4F6', height: '40px', width: '40px', borderRadius: '50%' }}>
+                <IconButton>
+                  <AddTaskIcon style={{ fill: "#4318FF" }} />
+                </IconButton>
+              </div>
+              <div >
+                <Typography variant="caption" style={{ color: '#A3AED0', marginLeft: '15px' }} noWrap>
+                  New Tasks
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    154
+                  </Typography>
+                </Typography>
+              </div>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+              <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%' }}>
+                <IconButton>
+                  <FileCopyIcon style={{ fill: "#4318FF" }} />
+                </IconButton>
+              </div>
+              <div >
+                <Typography variant="caption" style={{ color: '#A3AED0', marginLeft: '15px' }} noWrap>
+                  Total Projects
+                  <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
+                    2935
+                  </Typography>
+                </Typography>
+              </div>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
     </>
   )
 }

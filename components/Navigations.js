@@ -2,6 +2,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -35,8 +36,9 @@ import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded';
 import { useRouter } from 'next/router'
 import logo from "../public/images/HORIZON FREE.png";
 import profile from "../public/images/profile.png";
+import sidebarfooter from "../public/images/sidebar-footer.png"
 
-const drawerWidth = 220;
+const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -67,6 +69,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
+
+const DrawerFooter = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: theme.spacing(0, 1),
+  marginTop: '50px',
+  ...theme.mixins.toolbar,
+}));
+
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -141,7 +153,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navigations = () => {
-  const router = useRouter();
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -153,6 +165,8 @@ const Navigations = () => {
     setOpen(false);
   };
   const title = "Dashboard";
+  const style1 = { width: '110', height: '120' };
+  const style2 = { width: '30', height: '30' };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -305,7 +319,8 @@ const Navigations = () => {
   ];
 
   return (
-    <Box sx={{ display: 'relative' }}>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
       <AppBar position="fixed" open={open} elevation={0} >
         <Toolbar>
           <IconButton
@@ -400,39 +415,37 @@ const Navigations = () => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <React.Fragment>
-          <List>
-            {routes.map((item) => (
-              <ListItem key={item.id} disablePadding sx={{ display: 'block' }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
 
+        <List>
+          {routes.map((item) => (
+            <ListItem key={item.id} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <item.icon />
-                  </ListItemIcon>
-                  <ListItemText primary={item.label} sx={{ opacity: open ? 1 : 0 }}>
-                    <Link href={item.path}></Link>
-                    </ListItemText>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </React.Fragment>
+                  <item.icon />
+                </ListItemIcon>
+                <ListItemText primary={item.label} sx={{ opacity: open ? 1 : 0 }}>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <DrawerFooter >
+          <Image src={sidebarfooter} alt="sidebar-footer" style={{ width: 'auto', height: 'auto' }} />
+        </DrawerFooter>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-      </Box>
     </Box>
   );
 }
