@@ -18,9 +18,6 @@ import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { visuallyHidden } from '@mui/utils';
-import Checkedtable from '../components/Checkedtable';
-import Columntable from '../components/Columntable';
-import Complextable from '../components/Complextable';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -78,23 +75,22 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'name',
-    
-    label: 'Title',
+    label: 'Name',
   },
   {
     id: 'calories',
     numeric: true,
-    label: 'Title',
+    label: 'Status',
   },
   {
     id: 'fat',
     numeric: true,
-    label: 'Title',
+    label: 'Date',
   },
   {
     id: 'carbs',
     numeric: true,
-    label: 'Title',
+    label: 'Progress',
   }
 ];
 
@@ -161,7 +157,7 @@ function EnhancedTableToolbar(props) {
           color="#2B3674"
           fontWeight="Bold"
         >
-          Development Table
+          Complex Table
         </Typography>
       }
 
@@ -181,12 +177,12 @@ function EnhancedTableToolbar(props) {
   );
 }
 
-export default function EnhancedTable() {
+export default function ComplexTableDash() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
  
   const [page] = React.useState(0);
-  const [rowsPerPage] = React.useState(10);
+  const [rowsPerPage] = React.useState(3);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -197,14 +193,12 @@ export default function EnhancedTable() {
  
 
   return (
-    <Box sx={{padding: (theme) => theme.spacing(1)}}>
-      <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
-        <Grid xs={6}>
-          <Paper sx={{ width: '100%', mb: 2 }}>
+    <Box sx={{ width: '100%', }}>
+          <Paper sx={{ width: '100%'}}>
             <EnhancedTableToolbar />
             <TableContainer>
               <Table
-                sx={{ minWidth: 550 }}
+                sx={{ minWidth: '550' }}
                 aria-labelledby="tableTitle"
               >
                 <EnhancedTableHead
@@ -237,7 +231,7 @@ export default function EnhancedTable() {
                           >
                             {row.name}
                           </TableCell>
-                          <TableCell align="right" style = {{color: "#E0E5F2", }}>{row.calories}</TableCell>
+                          <TableCell align="right" style = {{color: "#2B3674", fontWeight:"Bold"}}>{row.calories}</TableCell>
                           <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
                           <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
                           {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
@@ -248,20 +242,6 @@ export default function EnhancedTable() {
               </Table>
             </TableContainer>
           </Paper>
-        </Grid>
-
-        <Grid xs={6}>
-         <Checkedtable/>
-        </Grid> 
-
-        <Grid xs={6}>
-          <Columntable/>
-        </Grid>
-
-        <Grid xs={6}>
-        <Complextable/>
-        </Grid>
-      </Grid>
     </Box>
   );
 }

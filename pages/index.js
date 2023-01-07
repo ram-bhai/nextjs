@@ -10,36 +10,16 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import flag from "../public/images/flag.png";
-import {styled} from '@mui/material/styles';
-
-
-
-const Responsive = styled("Box")(({theme})=>({
-  [theme.breakpoints.up('xs')]:{
-    height:'20px',
-    width:'50px'
-  },
-  [theme.breakpoints.up('sm')]:{
-    height:'40px',
-    width:'100px'
-  },
-  [theme.breakpoints.up('md')]:{
-    height:'60px',
-    width:'150px'
-  },
-  [theme.breakpoints.up('lg')]:{
-    height:'80px',
-    width:'200px'
-  },
-  [theme.breakpoints.up('xl')]:{
-    height:'100px',
-    width:'250px'
-  },
-
-}));
+import { styled } from '@mui/material/styles';
+import LineChart from '../components/LineChart';
+import CheckedTableDash from '../components/CheckedTableDash';
+import ComplexTableDash from '../components/ComplexTableDash';
+import fingerPrint from '../public/images/FingerPrint.png';
+import BarChart from '../components/BarChart';
 
 
 export default function Home() {
+
   return (
     <>
       <Head>
@@ -51,15 +31,23 @@ export default function Home() {
 
 
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2), }}>
-        <Grid container rowSpacing={0.5} >
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
-              <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%',marginRight:'20px' }}>
+        <Grid container rowSpacing={0.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+              <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%', marginRight: '20px' }}>
                 <IconButton>
                   <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
                 </IconButton>
               </div>
-              <div style={{ marginLeft: '15px' }}>
+              <div style={{ marginLeft: '10px' }}>
                 <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
                   Earnings
                   <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
@@ -69,15 +57,23 @@ export default function Home() {
               </div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
               <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%' }}>
                 <IconButton>
                   <AttachMoneyIcon style={{ fill: "#4318FF" }} />
                 </IconButton>
               </div>
               <div >
-                <Typography variant="caption" style={{ color: '#A3AED0', marginLeft: '15px' }} noWrap>
+                <Typography variant="caption" style={{ color: '#A3AED0', marginLeft: '5px' }} noWrap>
                   Spend this month
                   <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
                     $642.39
@@ -86,30 +82,45 @@ export default function Home() {
               </div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', 
-            display: 'flex', justifyContent: 'start', textAlign: 'start', alignItems: 'start',}}>
-              <div style={{marginLeft:'15px'}}>
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'start',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+              <div style={{ marginRight: '15px' }}>
                 <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
                   Sales
                   <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
                     $574.34
                   </Typography>
-                  <div style={{display:'flex'}}>
-                  <Typography variant = "body2" style={{ color: '#05CD99' }}>
-                    +23%
-                  </Typography>
-                  <Typography variant = "body2" style={{ color: '#A3AED0' }}>
-                    since last month 
-                  </Typography>
+                  <div style={{ display: 'flex' }}>
+                    <Typography variant="body2" style={{ color: '#05CD99' }}>
+                      +23%
+                    </Typography>
+                    <Typography variant="body2" style={{ color: '#A3AED0' }}>
+                      since last month
+                    </Typography>
                   </div>
                 </Typography>
               </div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
-              <div >
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+              <div style={{ justifyContent: 'center' }}>
                 <Typography variant="caption" style={{ color: '#A3AED0' }} noWrap>
                   Your balance
                   <Typography style={{ color: '#1B2559', fontWeight: 'bold' }}>
@@ -117,14 +128,22 @@ export default function Home() {
                   </Typography>
                 </Typography>
               </div>
-              <Image src={flag} alt="flag" style={{ marginLeft: '15px' }} />
+              <Image src={flag} alt="flag" height={30} width={30} borderRadius='50%' />
               <IconButton>
                 <ExpandMoreIcon />
               </IconButton>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
               <div style={{ background: '#20A4F6', height: '40px', width: '40px', borderRadius: '50%' }}>
                 <IconButton>
                   <AddTaskIcon style={{ fill: "#4318FF" }} />
@@ -140,8 +159,16 @@ export default function Home() {
               </div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
-            <Box sx={{ background: '#fff', height: '80px', width: '200px', borderRadius: '10px', display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center' }}>
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
+            <Box sx={{
+              height: '80px',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
               <div style={{ background: '#eaeef7', height: '40px', width: '40px', borderRadius: '50%' }}>
                 <IconButton>
                   <FileCopyIcon style={{ fill: "#4318FF" }} />
@@ -155,6 +182,183 @@ export default function Home() {
                   </Typography>
                 </Typography>
               </div>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
+            <Box>
+              <Box sx={{
+                height: '50vh',
+                background: '#fff',
+                borderRadius: '10px',
+                display: 'flex',
+                justifyContent: 'center',
+                textAlign: 'center',
+                alignItems: 'center'
+              }}>
+                <LineChart></LineChart>
+              </Box>
+            </Box>
+          </Grid>
+
+          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+              <BarChart />
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
+            <Box>
+              <Box sx={{
+                height: '50vh',
+                background: '#fff',
+                borderRadius: '10px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <CheckedTableDash />
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
+            <Box>
+              <Box sx={{
+                height: '50vh',
+                background: '#fff',
+                borderRadius: '10px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <ComplexTableDash />
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+              <Image src={fingerPrint} alt="finger" style={{ width: 'auto', height: 'auto' }} />
+            </Box>
+          </Grid>
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              alignItems: 'center'
+            }}>
+
             </Box>
           </Grid>
         </Grid>
