@@ -2,12 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import createEmotionCache from './components/createEmotionCache';
 import lightTheme from '../public/theme/Lighttheme';
 import '../styles/globals.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
+import createEmotionCache from '../components/createEmotionCache';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -40,8 +40,9 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded';
 import logo from "../public/images/HORIZON FREE.png";
 import profile from "../public/images/profile.png";
-import sidebarfooter from "../public/images/sidebar-footer.png"
-import BottomFooter from './components/BottomFooter';
+import sidebarfooter from "../public/images/sidebar-footer.png";
+import BottomFooter from '../components/BottomFooter';
+
 
 
 const clientSideEmotionCache = createEmotionCache();
