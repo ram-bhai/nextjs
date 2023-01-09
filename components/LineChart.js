@@ -5,20 +5,63 @@ ChartJs.register(Title,Tooltip,LineElement,Legend, CategoryScale, LinearScale,Po
 
 
 export default function LineChart(){
+
+  const options = {
+    scales: {
+        x: {
+            ticks: {
+                color: '#A3AED0'
+            },
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          max:100,
+          ticks: {
+            display: false
+        },
+            grid: {
+              display: false,
+            },
+          },
+      },
+    responsive: true,
+    plugins: {
+        legend: {
+          display:false
+        },
+    },
+    elements: {
+      point:{
+          radius: 0
+      }
+  }
+   
+
+};
     const [data, setData]= useState({
-        labels:["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        labels:[ "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
         datasets:[{
-          label:"First Dataset",
-          data:[40,30,50,40,35,58,40,37,29,90,63,54],
-          backgroundColor:'blue',
+          label:"Clients",
+          data:[35,58,40,37,29,70,63,54],
           borderColor:'blue',
           tension:'0.4'
-        }]
+        },
+        {
+          label:"Services",
+          data:[15,28,28,22,19,50,43,34],
+         
+          borderColor:'#6AD2FF',
+          tension:'0.4'
+        }
+      ]
     
       })
       return (
         <>
-        <Line data={data}></Line>
+        <Line data={data} options={options}></Line>
         </>
       )
 }

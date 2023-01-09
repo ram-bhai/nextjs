@@ -176,7 +176,7 @@ const MyApp = (props) => {
     setOpen(false);
   };
   const activeRoute = router.pathname;
-  const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`
+  const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`;
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -392,7 +392,7 @@ const MyApp = (props) => {
             </DrawerHeader>
             <Divider />
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/">
+              <Link href="/" style={{ textDecoration: 'none', color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -405,6 +405,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <HomeIcon />
@@ -417,7 +418,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/NFT_Marketplace">
+              <Link href="/NFT_Marketplace" style={{ textDecoration: 'none', color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -431,6 +432,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <ShoppingCartOutlinedIcon />
@@ -442,7 +444,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Tables">
+              <Link href="/Tables" style={{ textDecoration: 'none', color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -456,6 +458,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <BarChartRoundedIcon />
@@ -467,7 +470,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Kanban">
+              <Link href="/Kanban" style={{ textDecoration: 'none', color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -481,6 +484,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <DashboardRoundedIcon />
@@ -492,7 +496,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Profile">
+              <Link href="/Profile" style={{ textDecoration: 'none', color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -506,6 +510,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <PersonRoundedIcon />
@@ -517,7 +522,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/signin">
+              <Link href="/signin" style={{ textDecoration: 'none',color:'#A3AED0' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -530,6 +535,7 @@ const MyApp = (props) => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:'#A3AED0'
                     }}
                   >
                     <HttpsRoundedIcon />

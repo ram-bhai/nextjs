@@ -4,6 +4,9 @@ ChartJs.register(Tooltip,Legend, CategoryScale,BarElement);
 
 
 
+
+
+
 const options = {
     scales: {
         x: {
@@ -29,8 +32,6 @@ const options = {
             display: false,
         },
     },
-   
-
 };
 
 
@@ -42,24 +43,18 @@ const data = {
             label: 'users',
             data: [10, 22, 13, 44,35,20,22],
             borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: '#A2B337',
             borderRadius: '20'
         },
-        {
-            label: 'servers',
-            data: [11, 20, 3, 14, 25,10,4],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: '#2B3674'
-        }
     ]
 }
 
 
 
-const BarChart = (() => {
-    return <Bar data={data} options={options}/>
+const GradientChart = (() => {
+    return <Bar id="chart" data={data} options={options}/>
 
 })
 
-export default BarChart;
+export default GradientChart;
 

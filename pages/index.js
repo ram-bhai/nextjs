@@ -16,6 +16,24 @@ import CheckedTableDash from '../components/CheckedTableDash';
 import ComplexTableDash from '../components/ComplexTableDash';
 import fingerPrint from '../public/images/FingerPrint.png';
 import BarChart from '../components/BarChart';
+import Stack from '@mui/material/Stack';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import PieChart from '../components/PieChart';
+import TaskTable from '../components/TaskTable';
+import DateRangePicker from '../components/DateRangePicker';
+import DateRangePickerComp from '../components/DateRangePicker';
+import GradientChart from '../components/GradientChart';
+
+
+const Item = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.subtitle2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 
 export default function Home() {
@@ -242,11 +260,27 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
-              justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
+              justifyContent:'center'
             }}>
+              <Stack direction="row" spacing={5} alignItems='center' justifyContent='center'>
+                <Item>
+                  <Typography  color='#A3AED0'>
+                    Daily Traffic
+                  </Typography>
+                  <Typography  variant='h6' color='#2B3674' fontWeight='bold' marginBottom='5vh'>
+                    2.579
+                  </Typography>
+                </Item>
+
+                <Item>
+                  <Typography variant='caption' color='#05CD99' display='flex' noWrap>
+                    <ArrowDropUpIcon style={{fill:'#05CD99',maxHeight:'3%'}}/>
+                    <AddIcon style={{fill:'#05CD99', maxHeight:'2vh'}}/>
+                    2.45%
+                  </Typography>
+                </Item>
+              </Stack>
+              <GradientChart />
             </Box>
           </Grid>
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
@@ -259,7 +293,7 @@ export default function Home() {
               textAlign: 'center',
               alignItems: 'center'
             }}>
-
+              <PieChart />
             </Box>
           </Grid>
         </Grid>
@@ -286,11 +320,11 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
+              
               justifyContent: 'center',
               textAlign: 'center',
-              alignItems: 'center'
             }}>
+              {/* <TaskTable/> */}
             </Box>
           </Grid>
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
@@ -298,11 +332,9 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
               justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
             }}>
+              <DateRangePickerComp style={{height:'50vh',width:'auto'}}/>
 
             </Box>
           </Grid>

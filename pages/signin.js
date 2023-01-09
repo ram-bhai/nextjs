@@ -7,11 +7,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import Typography from '@mui/material/Typography';
-import bg from '../public/images/signin-image.png'
+import bg from '../public/images/signin-image.png';
+import googleImage from '../public/icons/icons8-google.svg';
+import GoogleIcon from '@mui/icons-material/Google';
+import Image from 'next/image';
 
 function Copyright(props) {
     return (
@@ -39,93 +43,56 @@ const SignIn = () => {
     };
 
     return (
-        <Box sx={{ background:'#fff',  padding: (theme) => (theme.spacing(2)) }}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
-                <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                    <ArrowBackIosOutlinedIcon style={{ fill: '#2B3674' }} />
-                    <Typography style={{ color: '#2B3674', height: '1px' }}>
-                        Back to dashboard
-                    </Typography>
-                    <Box
-                        sx={{
-                            my: 8,
-                            mx: 4,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
+        <Box sx={{ background: '#fff', padding: (theme) => (theme.spacing(2)) }}>
+            <Grid
+                container
+                spacing={0}
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                style={{ minHeight: '100vh' }}
+            >
 
-                        <Typography component="h1" variant="h5" style={{ color: '#2B3674' }}>
-                            Sign in
+                <Grid item xs={12} sm={12} md={6} lg={6} xl={6} >
+                    <Stack alignItems="center" justifyContent="center">
+                        <Button variant="text">
+                            <ArrowBackIosOutlinedIcon style={{ color:'#A3AED0', height:'2vh'}}/>
+                            <Link href='/' style={{ textDecoration: 'none', color:'#A3AED0'}}>Back to dashboard</Link>
+                        </Button>
+                    </Stack>
+
+                    <Stack alignItems="center" justifyContent="center" marginTop='30vh' marginRight='27%'>
+                        <Typography variant="h5" fontWeight='bold' color='#2B3674'>
+                            Sign In
                         </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                            >
-                                Sign In
-                            </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="/" variant="body2">
-                                        Forgot password?
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link href="/" variant="body2">
-                                        {"Not registered yet? Create an account"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
-                            <Copyright sx={{ mt: 5 }} />
-                        </Box>
-                    </Box>
+                    </Stack>
+
+                    <Stack alignItems="center" justifyContent="center" >
+                    <Typography variant="caption"  color='#A3AED0'>
+                            Enter your email and password to sign in!
+                        </Typography>
+                    </Stack>
+
+                    <Stack alignItems="center" justifyContent="center" marginTop='10vh' className='p-2'>
+                    <Button variant="outlined"  style={{background:'#eaeef7'}}>
+                            {/* <Image src={googleImage}></Image> */}
+                            <GoogleIcon style={{ color:'#A3AED0', height:'2vh'}}/>
+                            <Typography variant="caption" color='#2B3674' >
+                            Sign in with google
+                        </Typography>
+                        </Button>
+                    </Stack>
+
+
+
                 </Grid>
-                <Grid
-                    item
-                    xs={false}
-                    sm={false}
-                    md={6}
-                    lg={6}
-                    xl={6}
-                    sx={{
-                        // backgroundImage: 'url(https://source.unsplash.com/random)',
-                        backgroundImage: `url(${bg.src})`, width: '100vw',
-                        height: '100vh',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
+
+                <Grid item xs={false} sm={false} md={6} lg={6} xl={6} >
+
+                    <Image src={bg}></Image>
+                </Grid>
+
+
             </Grid>
         </Box>
     );
