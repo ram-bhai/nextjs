@@ -321,7 +321,8 @@ const MyApp = (props) => {
                 background: '#fff',
                 borderRadius: '25px',
                 marginTop: '7px',
-                justifyContent: 'center'
+                justifyContent: 'center',
+
               }}>
                 <Search>
                   <SearchIconWrapper>

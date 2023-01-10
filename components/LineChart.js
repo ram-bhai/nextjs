@@ -45,13 +45,13 @@ export default function LineChart(){
         labels:[ "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
         datasets:[{
           label:"Clients",
-          data:[35,58,40,37,29,70,63,54],
+          data:[35,58,40,37,29,70,63],
           borderColor:'blue',
           tension:'0.4'
         },
         {
           label:"Services",
-          data:[15,28,28,22,19,50,43,34],
+          data:[15,28,28,22,19,50,43],
          
           borderColor:'#6AD2FF',
           tension:'0.4'

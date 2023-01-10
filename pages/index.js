@@ -2,7 +2,11 @@ import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
@@ -10,6 +14,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import flag from "../public/images/flag.png";
+import medium from '../public/images/Medium_Cashback.png'
 import { styled } from '@mui/material/styles';
 import LineChart from '../components/LineChart';
 import CheckedTableDash from '../components/CheckedTableDash';
@@ -19,12 +24,17 @@ import BarChart from '../components/BarChart';
 import Stack from '@mui/material/Stack';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AddIcon from '@mui/icons-material/Add';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
 import Button from '@mui/material/Button';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PieChart from '../components/PieChart';
 import TaskTable from '../components/TaskTable';
 import DateRangePicker from '../components/DateRangePicker';
 import DateRangePickerComp from '../components/DateRangePicker';
 import GradientChart from '../components/GradientChart';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 
 const Item = styled(Box)(({ theme }) => ({
@@ -205,39 +215,110 @@ export default function Home() {
         </Grid>
       </Box>
 
+
+
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
-          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
-            <Box>
-              <Box sx={{
-                height: '50vh',
-                background: '#fff',
-                borderRadius: '10px',
-                display: 'flex',
-                justifyContent: 'center',
-                textAlign: 'center',
-                alignItems: 'center'
-              }}>
-                <LineChart></LineChart>
-              </Box>
-            </Box>
-          </Grid>
-
           <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
             <Box sx={{
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
-              justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
             }}>
+
+              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
+                <Toolbar sx={{ background: 'white' }}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <CalendarTodayIcon style={{ fill: '#A3AED0', maxHeight: '2vh' }} />
+                    <Typography variant='caption' fontWeight='bold' color='#A3AED0' noWrap>This month</Typography>
+                  </Box>
+                  <Tooltip title="More">
+                    <Box sx={{
+                      background: '#eaeef7',
+                      borderRadius: '25%',
+                      justifyContent: 'center',
+                    }}>
+                      <IconButton>
+                        <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
+                      </IconButton>
+                    </Box>
+                  </Tooltip>
+                </Toolbar>
+              </AppBar>
+
+
+              <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+                <Grid item lg={3} xs={3} sm={3} md={3} xl={3}>
+                  <Box sx={{
+                    height: 'auto',
+                    width: 'auto',
+                    textAlign: 'center'
+                  }}>
+                    <Typography variant='h4' fontWeight='bold' color='#2B3674' noWrap>$37.5K</Typography>
+                    <Stack direction='row' justifyContent='left'>
+                      <Item>
+                        <Typography variant='caption' color='#A3AED0' noWrap>Total Spent</Typography>
+                      </Item>
+                      <Item>
+                        <Typography variant='caption' color='#05CD99' noWrap>
+                          <ArrowDropUpIcon /> +2.45%
+                        </Typography>
+                      </Item>
+                    </Stack>
+                    <Stack direction='row' justifyContent='center'>
+                      <Typography variant='caption' color='#05CD99' fontWeight='bold' noWrap>
+                        <CheckCircleRoundedIcon style={{ maxHeight: '2vh' }} />On track
+                      </Typography>
+                    </Stack>
+
+                  </Box>
+
+                </Grid>
+                <Grid item lg={9} xs={9} sm={9} md={9} xl={9}>
+                  <Box sx={{
+                    height: 'auto',
+                    width: 'auto',
+                  }}>
+                    <LineChart />
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </Grid>
+
+
+          <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
+            <Box sx={{
+              height: 'auto',
+              width: 'auto',
+              background: '#fff',
+              borderRadius: '10px',
+              justifyContent: 'center',
+            }}>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
+                <Toolbar sx={{ background: 'white' }}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Weekly Revenue</Typography>
+                  </Box>
+                  <Tooltip title="More">
+                    <Box sx={{
+                      background: '#eaeef7',
+                      borderRadius: '25%',
+                    }}>
+                      <IconButton>
+                        <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
+                      </IconButton>
+                    </Box>
+                  </Tooltip>
+                </Toolbar>
+              </AppBar>
               <BarChart />
             </Box>
           </Grid>
         </Grid>
       </Box>
+
+
 
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
@@ -260,22 +341,21 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              justifyContent:'center'
             }}>
-              <Stack direction="row" spacing={5} alignItems='center' justifyContent='center'>
+              <Stack direction="row" spacing={4} alignItems='center' justifyContent='center'>
                 <Item>
-                  <Typography  color='#A3AED0'>
+                  <Typography color='#A3AED0'>
                     Daily Traffic
                   </Typography>
-                  <Typography  variant='h6' color='#2B3674' fontWeight='bold' marginBottom='5vh'>
+                  <Typography variant='h6' color='#2B3674' fontWeight='bold' marginBottom='5vh'>
                     2.579
                   </Typography>
                 </Item>
 
                 <Item>
                   <Typography variant='caption' color='#05CD99' display='flex' noWrap>
-                    <ArrowDropUpIcon style={{fill:'#05CD99',maxHeight:'3%'}}/>
-                    <AddIcon style={{fill:'#05CD99', maxHeight:'2vh'}}/>
+                    <ArrowDropUpIcon style={{ fill: '#05CD99', maxHeight: '3%' }} />
+                    <AddIcon style={{ fill: '#05CD99', maxHeight: '2vh' }} />
                     2.45%
                   </Typography>
                 </Item>
@@ -320,7 +400,7 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              
+
               justifyContent: 'center',
               textAlign: 'center',
             }}>
@@ -334,7 +414,7 @@ export default function Home() {
               borderRadius: '10px',
               justifyContent: 'center',
             }}>
-              <DateRangePickerComp style={{height:'50vh',width:'auto'}}/>
+              <DateRangePickerComp style={{ height: '50vh', width: 'auto' }} />
 
             </Box>
           </Grid>
@@ -348,11 +428,26 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
               justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
             }}>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
+                <Toolbar sx={{ background: 'white' }}>
+                <Tooltip title="More">
+                    <Box sx={{
+                      background: '#FEEFEE',
+                      borderRadius: '25%',
+                    }}>
+                      <IconButton>
+                        <WhatshotIcon style={{ fill: "#EE5D50" }} />
+                      </IconButton>
+                    </Box>
+                  </Tooltip>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Team members</Typography>
+                  </Box>
+                  
+                </Toolbar>
+              </AppBar>
             </Box>
           </Grid>
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
@@ -360,37 +455,52 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              display: 'flex',
               justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
             }}>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
+                <Toolbar sx={{ background: 'white' }}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Team members</Typography>
+                  </Box>
+                  <Tooltip title="More">
+                    <Box sx={{
+                      background: '#eaeef7',
+                      borderRadius: '25%',
+                    }}>
+                      <IconButton>
+                        <AddCircleRoundedIcon style={{ fill: "#4318FF" }} />
+                      </IconButton>
+                    </Box>
+                  </Tooltip>
+                </Toolbar>
+              </AppBar>
             </Box>
           </Grid>
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
               background: '#fff',
-              borderRadius: '10px',
-              display: 'flex',
-              justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
+              borderRadius: '10px'
             }}>
-              <Image src={fingerPrint} alt="finger" style={{ width: 'auto', height: 'auto' }} />
+              <Image src={fingerPrint} alt="finger" style={{ width: 'auto', height: '13vh', marginTop: '10%', marginLeft: '5%' }} />
+              <Typography variant='h5' color='#2B3674' fontWeight='bold' marginLeft='5%' marginTop='7%' noWrap>
+                Control card security <br /> in-app with a tap
+              </Typography>
+              <Typography variant='caption' color='#A3AED0' marginLeft='5%' marginTop='2%' noWrap>
+                Discover our cards benifits, with one tap.
+              </Typography>
+              <Button variant="contained" size="large" style={{ marginLeft: '5%', marginTop: '8%', background:'#4318FF', width:'90%' }}>Cards</Button>
             </Box>
           </Grid>
-          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
-            <Box sx={{
-              height: '50vh',
-              background: '#fff',
-              borderRadius: '10px',
-              display: 'flex',
-              justifyContent: 'center',
-              textAlign: 'center',
-              alignItems: 'center'
-            }}>
 
+          <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
+            <Box sx={{
+              height: '50vh',
+              background: '#fff',
+              borderRadius: '10px',
+              justifyContent: 'center',
+            }}>
+              <Image src={medium} alt='medium-cash' style={{ width: '100%', height: 'auto' }} ></Image>
             </Box>
           </Grid>
         </Grid>

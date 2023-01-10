@@ -21,30 +21,23 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { visuallyHidden } from '@mui/utils';
 
-function checkData(name, calories, fat, carbs, protein) {
+function checkData(name, calories, fat ) {
     return {
         name,
         calories,
-        fat,
-        carbs,
-        protein,
+        fat
     };
 }
 
 const rowsdata = [
-    checkData('Cupcake', 30.5, 3.7, 67, 4.3),
-    checkData('Donut', 45.2, 25.0, 51, 4.9),
-    checkData('Eclair', 26.2, 16.0, 24, 6.0),
-    checkData('Frozen yoghurt', 15.9, 6.0, 24, 4.0),
-    checkData('Gingerbread', 35.6, 16.0, 49, 3.9),
-    checkData('Honeycomb', 40.8, 3.2, 87, 6.5),
-    checkData('Ice cream sandwich', 23.7, 9.0, 37, 4.3),
-    checkData('Jelly Bean', 37.5, 0.0, 94, 0.0),
-    checkData('KitKat', 51.8, 26.0, 65, 7.0),
-    checkData('Lollipop', 39.2, 0.2, 98, 0.0),
-    checkData('Marshmallow', 31.8, 0, 81, 2.0),
-    checkData('Nougat', 36.0, 19.0, 9, 37.0),
-    checkData('Oreo', 43.7, 18.0, 63, 4.0),
+    checkData('Cupcake', 30.5, 3.7 ),
+    checkData('Donut', 45.2, 25.0),
+    checkData('Eclair', 26.2, 16.0),
+    checkData('Frozen yoghurt', 15.9, 6.0),
+    checkData('Gingerbread', 35.6, 16.0),
+    checkData('Honeycomb', 40.8, 3.2),
+    checkData('Ice cream sandwich', 23.7, 9.0),
+    
 ];
 
 function descendingComparators(a, b, orderBy) {
@@ -90,11 +83,6 @@ const headCellsdata = [
         id: 'fat',
         numeric: true,
         label: 'Quantity',
-    },
-    {
-        id: 'carbs',
-        numeric: true,
-        label: 'Date',
     }
 ];
 
@@ -258,7 +246,7 @@ const CheckedTableDash = () => {
                 <EnhancedTableToolbars numSelected={selected.length} />
                 <TableContainer>
                     <Table
-                        sx={{ minWidth: 550 }}
+                        sx={{ minWidth: 50 }}
                         aria-labelledby="tableTitle"
                     >
                         <EnhancedTableHeads
@@ -305,8 +293,6 @@ const CheckedTableDash = () => {
                                             </TableCell>
                                             <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.calories}%</TableCell>
                                             <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
-                                            <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
-                                            {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
                                         </TableRow>
                                     );
                                 })}
