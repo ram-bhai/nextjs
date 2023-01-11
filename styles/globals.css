@@ -46,4 +46,12 @@ body {
    
     display: none !important;
 }
-/* .rdrDateRangeWrapper{} */
+
+
+.css-sxh3gq-MuiAvatar-root-MuiAvatarGroup-avatar{
+    color:#2b3674;
+    background-color: #eaeef7;
+    height: 20px;
+    width: 20px;
+    font-size: 0.6rem;
+}

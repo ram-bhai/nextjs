@@ -177,6 +177,7 @@ const MyApp = (props) => {
   };
   const activeRoute = router.pathname;
   const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`;
+  
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -545,9 +546,9 @@ const MyApp = (props) => {
                   </ListItemText>
                 </ListItemButton>
               </Link>
-            </ListItem>
+            </ListItem> 
             <DrawerFooter >
-              <Image src={sidebarfooter} alt="sidebar-footer" style={{ width: 'auto', height: 'auto' }} />
+            <Image src={sidebarfooter} alt="sidebar-footer" style={{ width: 'auto', height: 'auto' }} />
             </DrawerFooter>
 
           </Drawer>

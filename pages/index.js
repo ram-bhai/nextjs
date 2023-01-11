@@ -5,6 +5,8 @@ import Image from 'next/image';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
@@ -22,6 +24,9 @@ import ComplexTableDash from '../components/ComplexTableDash';
 import fingerPrint from '../public/images/FingerPrint.png';
 import BarChart from '../components/BarChart';
 import Stack from '@mui/material/Stack';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AddIcon from '@mui/icons-material/Add';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
@@ -35,6 +40,8 @@ import DateRangePickerComp from '../components/DateRangePicker';
 import GradientChart from '../components/GradientChart';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
+import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 
 
 const Item = styled(Box)(({ theme }) => ({
@@ -44,6 +51,15 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+
+
+let toggle = false;
+
+function handleToggle() {
+  toggle = !toggle;
+  return toggle;
+}
+
 
 
 export default function Home() {
@@ -238,8 +254,8 @@ export default function Home() {
                       borderRadius: '25%',
                       justifyContent: 'center',
                     }}>
-                      <IconButton>
-                        <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
+                      <IconButton onClick={handleToggle}>
+                        {toggle == false ? <BarChartRoundedIcon style={{ fill: "#4318FF" }} /> : <CheckCircleRoundedIcon style={{ fill: "#4318FF" }} />}
                       </IconButton>
                     </Box>
                   </Tooltip>
@@ -351,7 +367,6 @@ export default function Home() {
                     2.579
                   </Typography>
                 </Item>
-
                 <Item>
                   <Typography variant='caption' color='#05CD99' display='flex' noWrap>
                     <ArrowDropUpIcon style={{ fill: '#05CD99', maxHeight: '3%' }} />
@@ -363,6 +378,8 @@ export default function Home() {
               <GradientChart />
             </Box>
           </Grid>
+
+
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -378,6 +395,8 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
+
+
 
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
@@ -395,6 +414,8 @@ export default function Home() {
               </Box>
             </Box>
           </Grid>
+
+
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -407,6 +428,8 @@ export default function Home() {
               {/* <TaskTable/> */}
             </Box>
           </Grid>
+
+
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -421,6 +444,8 @@ export default function Home() {
         </Grid>
       </Box>
 
+
+
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
@@ -428,28 +453,79 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              justifyContent: 'center',
             }}>
-              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
-                <Toolbar sx={{ background: 'white' }}>
-                <Tooltip title="More">
-                    <Box sx={{
-                      background: '#FEEFEE',
-                      borderRadius: '25%',
-                    }}>
-                      <IconButton>
-                        <WhatshotIcon style={{ fill: "#EE5D50" }} />
-                      </IconButton>
-                    </Box>
-                  </Tooltip>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Team members</Typography>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '10px' }}>
+                <Toolbar sx={{ background: 'white', borderRadius: '10px' }}>
+                  <Box sx={{
+                    background: '#FEEFEE',
+                    borderRadius: '25%',
+                  }}>
+                    <IconButton>
+                      <WhatshotIcon style={{ fill: "#EE5D50" }} />
+                    </IconButton>
                   </Box>
-                  
+
+                  <Box >
+                    <Typography variant='caption' color='#A3AED0' marginLeft='5%' noWrap>
+                      Business Design
+                    </Typography>
+                    <br />
+                    <Typography variant='title' fontWeight='bold' color='#2B3674' marginLeft='5%' noWrap>
+                      New lession is available
+                    </Typography>
+                  </Box>
+                </Toolbar>
+              </AppBar>
+              <Box sx={{ marginTop: '15%' }}>
+                <Typography variant='subtitle' color='#2B3674' fontWeight='bold' marginLeft='7%' noWrap>
+                  What do you need to know to
+                </Typography>
+                <br />
+                <Typography variant='subtitle' color='#2B3674' fontWeight='bold' marginLeft='7%' noWrap>
+                  create better products?
+                </Typography>
+              </Box>
+              <Stack direction='row' display='flex' justifyContent='center' marginTop='10%'>
+                <Item>
+                  <TimerOutlinedIcon style={{ fill: '#01B574' }} />
+                </Item>
+                <Item>
+                  <Typography variant='caption' color='#2B3674' fontWeight='bold' noWrap>
+                    85mins
+                  </Typography>
+                </Item>
+                <Item>
+                  <SlowMotionVideoIcon style={{ fill: '#EE5D50' }} />
+                </Item>
+                <Item>
+                  <Typography variant='caption' color='#2B3674' fontWeight='bold' noWrap>
+                    Video format
+                  </Typography>
+                </Item>
+              </Stack>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '10px' }}>
+                <Toolbar sx={{ background: 'white' }}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <AvatarGroup total={22}>
+                      <Avatar src='https://randomuser.me/api/portraits/men/22.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
+                      <Avatar src='https://randomuser.me/api/portraits/women/74.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
+                      <Avatar src='https://randomuser.me/api/portraits/men/33.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
+                      <Avatar src='https://randomuser.me/api/portraits/women/79.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
+                    </AvatarGroup>
+                  </Box>
+                  <Box>
+                    <Button variant='text' style={{ background: '#4318FF', borderRadius: '5px', color: 'white' }}>
+                      Get started
+                    </Button>
+                  </Box>
                 </Toolbar>
               </AppBar>
             </Box>
           </Grid>
+
+
+
+
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -474,8 +550,27 @@ export default function Home() {
                   </Tooltip>
                 </Toolbar>
               </AppBar>
+
+              <Card sx={{ maxWidth: 345 }}>
+                <CardHeader
+                  avatar={
+                    <Avatar src='https://randomuser.me/api/portraits/women/43.jpg'></Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title="Shrimp and Chorizo Paella"
+                  subheader="September 14, 2016"
+                />
+              </Card>
             </Box>
           </Grid>
+
+
+
+
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -489,9 +584,12 @@ export default function Home() {
               <Typography variant='caption' color='#A3AED0' marginLeft='5%' marginTop='2%' noWrap>
                 Discover our cards benifits, with one tap.
               </Typography>
-              <Button variant="contained" size="large" style={{ marginLeft: '5%', marginTop: '8%', background:'#4318FF', width:'90%' }}>Cards</Button>
+              <Button variant="contained" size="large" style={{ marginLeft: '5%', marginTop: '8%', background: '#4318FF', width: '90%' }}>Cards</Button>
             </Box>
           </Grid>
+
+
+
 
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
