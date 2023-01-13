@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
@@ -167,6 +168,7 @@ const MyApp = (props) => {
   const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -175,8 +177,11 @@ const MyApp = (props) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
   const activeRoute = router.pathname;
   const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`;
+  const currentRoute = activeRoute.split('/').pop();
+  
   
 
 
@@ -313,7 +318,7 @@ const MyApp = (props) => {
                 <MenuIcon style={{ fill: '#2B3674' }} />
               </IconButton>
               <Typography variant="h6" color="#2B3674" fontWeight="Bold" noWrap component="div">
-                {title}
+                {title === 'Dashboard' ? title : currentRoute}
               </Typography>
 
               <Box sx={{ flexGrow: 1 }} />
@@ -394,7 +399,7 @@ const MyApp = (props) => {
             </DrawerHeader>
             <Divider />
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/" style={{ textDecoration: 'none', color:'#A3AED0' }}>
+              <Link href="/" className={title === 'Dashboard' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -410,7 +415,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <HomeIcon />
+                    <HomeIcon className={title === 'Dashboard' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>
@@ -420,7 +425,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/NFT_Marketplace" style={{ textDecoration: 'none', color:'#A3AED0' }}>
+              <Link href="/NFT_Marketplace" className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -437,7 +442,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <ShoppingCartOutlinedIcon />
+                    <ShoppingCartOutlinedIcon className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="NFT Marketplace" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>
@@ -446,7 +451,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Tables" style={{ textDecoration: 'none', color:'#A3AED0' }}>
+              <Link href="/Tables" className={title === '/Tables' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -463,7 +468,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <BarChartRoundedIcon />
+                    <BarChartRoundedIcon className={title === '/Tables' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="Tables" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>
@@ -472,7 +477,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Kanban" style={{ textDecoration: 'none', color:'#A3AED0' }}>
+              <Link href="/Kanban" className={title === '/Kanban' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -489,7 +494,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <DashboardRoundedIcon />
+                    <DashboardRoundedIcon className={title === '/Kanban' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="Kanban" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>
@@ -498,7 +503,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Profile" style={{ textDecoration: 'none', color:'#A3AED0' }}>
+              <Link href="/Profile" className={title === '/Profile' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -515,7 +520,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <PersonRoundedIcon />
+                    <PersonRoundedIcon className={title === '/Profile' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>
@@ -524,7 +529,7 @@ const MyApp = (props) => {
             </ListItem>
 
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/signin" style={{ textDecoration: 'none',color:'#A3AED0' }}>
+              <Link href="/signin" className={title === '/signin' ? styles.active : styles.nonActive}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -540,7 +545,7 @@ const MyApp = (props) => {
                       color:'#A3AED0'
                     }}
                   >
-                    <HttpsRoundedIcon />
+                    <HttpsRoundedIcon className={title === '/signin' ? styles.active : styles.nonActive}/>
                   </ListItemIcon>
                   <ListItemText primary="Sign In" sx={{ opacity: open ? 1 : 0 }}>
                   </ListItemText>

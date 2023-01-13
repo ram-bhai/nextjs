@@ -421,11 +421,8 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
-
-              justifyContent: 'center',
-              textAlign: 'center',
             }}>
-              {/* <TaskTable/> */}
+              <TaskTable/>
             </Box>
           </Grid>
 
@@ -550,19 +547,46 @@ export default function Home() {
                   </Tooltip>
                 </Toolbar>
               </AppBar>
-
-              <Card sx={{ maxWidth: 345 }}>
+              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674', marginTop: '7%' }}>
                 <CardHeader
                   avatar={
-                    <Avatar src='https://randomuser.me/api/portraits/women/43.jpg'></Avatar>
+                    <Avatar src='https://randomuser.me/api/portraits/women/79.jpg'></Avatar>
                   }
                   action={
                     <IconButton aria-label="settings">
-                      <MoreVertIcon />
+                      <MoreVertIcon style={{ fill: '#A3AED0' }} />
                     </IconButton>
                   }
-                  title="Shrimp and Chorizo Paella"
-                  subheader="September 14, 2016"
+                  title="Adela Parkson"
+                  subheader="Creative director"
+                />
+              </Card>
+              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674', marginTop: '6%' }}>
+                <CardHeader
+                  avatar={
+                    <Avatar src='https://randomuser.me/api/portraits/men/14.jpg'></Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon style={{ fill: '#A3AED0' }} />
+                    </IconButton>
+                  }
+                  title="Christian Mad"
+                  subheader="Product Designer"
+                />
+              </Card>
+              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674', marginTop: '6%' }}>
+                <CardHeader
+                  avatar={
+                    <Avatar src='https://randomuser.me/api/portraits/men/33.jpg'></Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon style={{ fill: '#A3AED0' }} />
+                    </IconButton>
+                  }
+                  title="Jason Statham"
+                  subheader="junior graphic designer"
                 />
               </Card>
             </Box>
@@ -590,7 +614,6 @@ export default function Home() {
 
 
 
-
           <Grid item lg={3} xs={6} sm={6} md={3} xl={3}>
             <Box sx={{
               height: '50vh',
@@ -601,6 +624,7 @@ export default function Home() {
               <Image src={medium} alt='medium-cash' style={{ width: '100%', height: 'auto' }} ></Image>
             </Box>
           </Grid>
+
         </Grid>
       </Box>
     </>

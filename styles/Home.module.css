@@ -1,0 +1,9 @@
+.active{
+    text-decoration: none;
+    font-weight: bold;
+    color: #4318FF;
+}
+.nonActive{
+    text-decoration: none;
+     color:#A3AED0;
+}
