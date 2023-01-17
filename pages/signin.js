@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import {useSession, signIn} from 'next-auth/react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -42,6 +42,10 @@ function Copyright(props) {
 
 
 const SignIn = () => {
+    const {data:session} = useSession();
+    console.log(session);
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -83,7 +87,7 @@ const SignIn = () => {
                     </Stack>
 
                     <Stack alignItems="center" justifyContent="center" marginTop='5vh' >
-                        <Button variant="outlined" style={{ background: '#eaeef7', border: 'none' }}>
+                        <Button variant="outlined" onClick={()=> signIn()} style={{ background: '#eaeef7', border: 'none' }}>
                             <Image src={googleImage} height={15}></Image>
                             {/* <GoogleIcon style={{ color: '#A3AED0', height: '2vh' }} /> */}
                             <Typography variant="caption" color='#2B3674' style={{  marginLeft: '1rem' }} >

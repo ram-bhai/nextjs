@@ -6,6 +6,7 @@ import { CacheProvider } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import lightTheme from '../public/theme/Lighttheme';
 import '../styles/globals.css';
+import {SessionProvider} from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
@@ -166,7 +167,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-const MyApp = (props) => {
+const MyApp = (props, session) => {
 
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
@@ -322,7 +323,7 @@ const MyApp = (props) => {
 
 
   return (
-    <>
+    <SessionProvider session={session}>
     <Head>
     <title>Horizon Free</title>
     <meta name="description" content="Learning purpose nextjs project" />
@@ -597,7 +598,7 @@ const MyApp = (props) => {
         </Box> 
       </ThemeProvider>
     </CacheProvider>
-    </>
+    </SessionProvider>
   );
 };
 
