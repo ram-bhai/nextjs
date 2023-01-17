@@ -42,8 +42,8 @@ function Copyright(props) {
 
 
 const SignIn = () => {
-    const {data:session} = useSession();
-    console.log(session);
+    const {data: session} = useSession();
+    console.log(data);
 
 
     const handleSubmit = (event) => {
