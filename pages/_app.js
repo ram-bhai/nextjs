@@ -40,6 +40,7 @@ import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded';
+import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../public/images/HORIZON FREE.png";
 import profile from "../public/images/profile.png";
 import sidebarfooter from "../public/images/sidebar-footer.png";
@@ -205,8 +206,10 @@ const MyApp = (props) => {
   }
 
   const handleMenuClose = () => {
+    router.push('/Profile');
     setAnchorEl(null);
     handleMobileMenuClose();
+    
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -230,8 +233,24 @@ const MyApp = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleSignOut}>Logout</MenuItem>
+      <MenuItem onClick={handleMenuClose}  style={{ color: '#2B3674' }}>
+      <IconButton>
+          <Image
+            src={profile}
+            alt={"Thumbnail-alt"}
+            width={30}
+            height={30}
+            style={{ marginRight: "12px", borderRadius: "50%" }}
+          />
+        </IconButton>
+        Profile
+        </MenuItem>
+      <MenuItem onClick={handleSignOut}  style={{ color: '#2B3674' }}>
+      <IconButton  color="#AEA3D0">
+          <LogoutIcon  style={{ fill: '#AEA3D0' }}/>
+        </IconButton>
+        Logout
+        </MenuItem>
     </Menu>
   );
 
@@ -265,26 +284,26 @@ const MyApp = (props) => {
         </Search>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <MailIcon />
+        <IconButton  color="#AEA3D0">
+          <NotificationsNoneIcon  style={{ fill: '#AEA3D0' }}/>
         </IconButton>
-        <p>Messages</p>
+        <p style={{ color: '#2B3674' }}>Notifications</p>
       </MenuItem>
       <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <NotificationsNoneIcon />
+        <IconButton size="large"  color="#AEA3D0">
+          <DarkModeIcon  style={{ fill: '#AEA3D0' }}/>
         </IconButton>
-        <p>Notifications</p>
+        <p style={{ color: '#2B3674' }}>Theme</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large"  color="#AEA3D0">
+          <InfoOutlinedIcon  style={{ fill: '#AEA3D0' }}/>
+        </IconButton>
+        <p style={{ color: '#2B3674' }}>Info</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
         >
@@ -296,7 +315,7 @@ const MyApp = (props) => {
             style={{ marginRight: "15px", borderRadius: "50%" }}
           />
         </IconButton>
-        <p>Profile</p>
+        <p style={{ color: '#2B3674' }}>Profile</p>
       </MenuItem>
     </Menu>
   );
@@ -353,15 +372,15 @@ const MyApp = (props) => {
                     style={{ color: '#2B3674' }}
                   />
                 </Search>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                <IconButton size="large" color="#AEA3D0">
                   <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
                 </IconButton>
 
-                <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+                <IconButton size="large"  color="#AEA3D0">
                   <DarkModeIcon style={{ fill: '#AEA3D0' }} />
                 </IconButton>
 
-                <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+                <IconButton size="large"  color="#AEA3D0">
                   <InfoOutlinedIcon style={{ fill: '#AEA3D0' }} />
                 </IconButton>
                 <IconButton
