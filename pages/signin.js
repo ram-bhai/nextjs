@@ -43,7 +43,7 @@ function Copyright(props) {
 
 const SignIn = () => {
     const {data: session} = useSession();
-    console.log(data);
+    console.log(session.user.email);
 
 
     const handleSubmit = (event) => {
