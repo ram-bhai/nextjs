@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { CacheProvider } from '@emotion/react';
@@ -302,6 +303,14 @@ const MyApp = (props) => {
 
 
   return (
+    <>
+    <Head>
+    <title>Horizon Free</title>
+    <meta name="description" content="Learning purpose nextjs project" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="icon" href="/images/HORIZON FREE.png" />
+  </Head>
+
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
@@ -569,6 +578,7 @@ const MyApp = (props) => {
         </Box> 
       </ThemeProvider>
     </CacheProvider>
+    </>
   );
 };
 
