@@ -433,8 +433,9 @@ export default function Home() {
               background: '#fff',
               borderRadius: '10px',
               justifyContent: 'center',
+              alignItems: 'center'
             }}>
-              <DateRangePickerComp style={{ height: '50vh', width: 'auto' }} />
+              <DateRangePickerComp style={{  width: 'auto' }} />
 
             </Box>
           </Grid>
@@ -450,6 +451,8 @@ export default function Home() {
               height: '50vh',
               background: '#fff',
               borderRadius: '10px',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}>
               <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '10px' }}>
                 <Toolbar sx={{ background: 'white', borderRadius: '10px' }}>
@@ -529,6 +532,7 @@ export default function Home() {
               background: '#fff',
               borderRadius: '10px',
               justifyContent: 'center',
+              alignItems: 'center'
             }}>
               <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
                 <Toolbar sx={{ background: 'white' }}>
@@ -599,7 +603,9 @@ export default function Home() {
             <Box sx={{
               height: '50vh',
               background: '#fff',
-              borderRadius: '10px'
+              borderRadius: '10px',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}>
               <Image src={fingerPrint} alt="finger" style={{ width: 'auto', height: '13vh', marginTop: '10%', marginLeft: '5%' }} />
               <Typography variant='h5' color='#2B3674' fontWeight='bold' marginLeft='5%' marginTop='7%' noWrap>
@@ -620,6 +626,7 @@ export default function Home() {
               background: '#fff',
               borderRadius: '10px',
               justifyContent: 'center',
+              alignItems: 'center'
             }}>
               <Image src={medium} alt='medium-cash' style={{ width: '100%', height: 'auto' }} ></Image>
             </Box>

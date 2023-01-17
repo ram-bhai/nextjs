@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { CacheProvider } from '@emotion/react';
@@ -163,12 +163,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
+
 const MyApp = (props) => {
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -182,11 +183,8 @@ const MyApp = (props) => {
   const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`;
   const currentRoute = activeRoute.split('/').pop();
   
-  
-
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -198,6 +196,12 @@ const MyApp = (props) => {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
+
+  const handleSignOut = () =>{
+    localStorage.clear();
+    router.push('/signin');
+   
+  }
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -226,7 +230,7 @@ const MyApp = (props) => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleSignOut}>Logout</MenuItem>
     </Menu>
   );
 
@@ -301,7 +305,7 @@ const MyApp = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <Box sx={{ display: 'flex' }}>
+         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="fixed" open={open} elevation={0} >
             <Toolbar>
@@ -562,7 +566,7 @@ const MyApp = (props) => {
             <Component {...pageProps} />
          <BottomFooter/>
           </Box>
-        </Box>
+        </Box> 
       </ThemeProvider>
     </CacheProvider>
   );
