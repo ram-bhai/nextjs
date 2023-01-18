@@ -207,7 +207,6 @@ const MyApp = (props, session) => {
   }
 
   const handleMenuClose = () => {
-    router.push('/Profile');
     setAnchorEl(null);
     handleMobileMenuClose();
     
@@ -235,6 +234,7 @@ const MyApp = (props, session) => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}  style={{ color: '#2B3674' }}>
+        <Link href="/Profile">
       <IconButton>
           <Image
             src={profile}
@@ -244,6 +244,7 @@ const MyApp = (props, session) => {
             style={{ marginRight: "12px", borderRadius: "50%" }}
           />
         </IconButton>
+        </Link>
         Profile
         </MenuItem>
       <MenuItem onClick={handleSignOut}  style={{ color: '#2B3674' }}>
@@ -323,7 +324,7 @@ const MyApp = (props, session) => {
 
 
   return (
-    <SessionProvider session={session}>
+    <>
     <Head>
     <title>Horizon Free</title>
     <meta name="description" content="Learning purpose nextjs project" />
@@ -592,13 +593,15 @@ const MyApp = (props, session) => {
           </Drawer>
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <DrawerHeader />
+            <SessionProvider session={session}>
             <Component {...pageProps} />
+            </SessionProvider>
          <BottomFooter/>
           </Box>
         </Box> 
       </ThemeProvider>
     </CacheProvider>
-    </SessionProvider>
+    </>
   );
 };
 

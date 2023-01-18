@@ -25,44 +25,34 @@ const NFT_Marketplace = () => {
             }}>
               <Image src={market} style={{ maxHeight: '30vh' }}></Image>
             </Box>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={5} xl={5}>
-            <CheckedTableDash/>
-          </Grid>
-        </Grid>
-      </Box>
-
-      <Box sx={{ padding: (theme) => theme.spacing(2), flexGrow: 1 }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
-          <Grid item xs={12} sm={12} md={8} lg={7} xl={7}>
-            <Box sx={{ flexGrow: 1 }}>
-            <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
+            <Box sx={{ flexGrow: 1, mt: 2 }}>
+              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
                 <Toolbar sx={{ background: '#eaeef7' }}>
                   <Typography
                     variant="h6"
                     noWrap
                     edge="start"
-                    sx={{color: "#2b3674", fontWeight: "Bold" }}
+                    sx={{ color: "#2b3674", fontWeight: "Bold" }}
                   >
                     Trending NFTs
                   </Typography>
                   <Box sx={{ flexGrow: 1 }} />
-                  <Box sx={{display:'flex'}}>
-                    <IconButton size='medium' style={{color: "#2b3674", background: '#fff',borderRadius:'' }}>
+                  <Box sx={{ display: 'flex' }}>
+                    <IconButton size='small' style={{ color: "#2b3674", }}>
                       Art
                     </IconButton>
-                    <IconButton size='medium'
-                      style={{color: "#2b3674", background: '#fff', marginLeft:'2%' }}
+                    <IconButton size='small'
+                      style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Music
                     </IconButton>
-                    <IconButton size='medium'
-                      style={{color: "#2b3674", background: '#fff', marginLeft:'2%' }}
+                    <IconButton size='small'
+                      style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Collectibles
                     </IconButton>
-                    <IconButton size='medium'
-                      style={{color: "#2b3674", background: '#fff', marginLeft:'2%' }}
+                    <IconButton size='small'
+                      style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Sports
                     </IconButton>
@@ -72,7 +62,10 @@ const NFT_Marketplace = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={5} xl={5}>
-            <CheckedTableDash/>
+            <CheckedTableDash />
+          <Box sx={{mt:2}}>
+          <CheckedTableDash />
+          </Box>
           </Grid>
         </Grid>
       </Box>

@@ -1,6 +1,7 @@
 :root {
-    background: #eaeef7;
+    background: #eaeef7; 
 }
+
 
 body {
     background: #eaeef7 !important;
@@ -55,4 +56,20 @@ body {
     height: 20px;
     width: 20px;
     font-size: 0.6rem;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    height: 0.2em;
+    border:none; 
+    border-radius: 50% !important;
+}
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    height: 0.2em;
+}
+
+.css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root:hover {
+    background: none !important;
+}
+.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root:hover {
+    background: none !important;
 }

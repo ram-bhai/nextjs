@@ -1,4 +1,4 @@
-import {useSession, signIn} from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,6 +22,13 @@ import googleImage from '../public/icons/icons8-google.svg';
 import GoogleIcon from '@mui/icons-material/Google';
 import Image from 'next/image';
 import Router from 'next/router';
+import { useState } from 'react';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import { Formik, Form } from 'formik';
+import * as EmailValidator from "email-validator";
 
 
 function Copyright(props) {
@@ -42,20 +49,37 @@ function Copyright(props) {
 
 
 const SignIn = () => {
-    const {data: session} = useSession();
-    console.log(session.user.email);
+    const { data: session } = useSession();
+    console.log();
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        console.log(data.get('email'));
+        console.log(data.get('password'));
         localStorage.setItem('Email', data.get('email'));
         localStorage.setItem('Password', data.get('password'));
-        if(localStorage.getItem('Email').length > 0){
+        if (localStorage.getItem('Email').length > 0) {
             Router.push('/');
         }
         else return false;
     };
+
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange = (evnt) => {
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
+
+
 
     return (
         <Box sx={{ background: '#fff', padding: (theme) => (theme.spacing(2)) }}>
@@ -87,67 +111,155 @@ const SignIn = () => {
                     </Stack>
 
                     <Stack alignItems="center" justifyContent="center" marginTop='5vh' >
-                        <Button variant="outlined" onClick={()=> signIn()} style={{ background: '#eaeef7', border: 'none' }}>
+                        <Button variant="outlined" onClick={() => signIn()} style={{ background: '#eaeef7', border: 'none' }}>
                             <Image src={googleImage} height={15}></Image>
                             {/* <GoogleIcon style={{ color: '#A3AED0', height: '2vh' }} /> */}
-                            <Typography variant="caption" color='#2B3674' style={{  marginLeft: '1rem' }} >
+                            <Typography variant="caption" color='#2B3674' style={{ marginLeft: '1rem' }} >
                                 Sign in with google
                             </Typography>
                         </Button>
                     </Stack>
 
                     <div style={{ marginTop: '5vh', color: '#A3AED0' }}>
-                        <Divider>or</Divider>
+                        <Divider variant='middle'>or</Divider>
                     </div>
 
 
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 4 }}
-                    >
-                        <Stack alignItems="center" justifyContent="center">
-                        <TextField required id="email" label="Email" name="email" autoComplete="email" autoFocus
-                        style={{maxWidth:'50%', background: '#eaeef7'}}
-                        />
-                        </Stack>
+                    <Box sx={{ mt: 4 }}>
+                        <Formik
+                            initialValues={{ email: "", password: "" }}
+                        
+                            validate={values => {
+                                let errors = {};
+                                if (!values.email) {
+                                    errors.email = "Required";
+                                } else if (!EmailValidator.validate(values.email)) {
+                                    errors.email = "Invalid email address.";
+                                }
 
-                        <Stack alignItems="center" justifyContent="center" style={{marginTop:'5%'}}>
-                        <TextField
-                            required
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            style={{maxWidth:'50%', background: '#eaeef7', }}
-                        />
-                        </Stack>
+                                const passwordRegex = /(?=.*[0-9])/;
+                                if (!values.password) {
+                                    errors.password = "Required";
+                                } else if (values.password.length < 8) {
+                                    errors.password = "Password must be 8 characters long.";
+                                } else if (!passwordRegex.test(values.password)) {
+                                    errors.password = "Invalid password. Must contain one number.";
+                                }
 
-                        <Grid container marginTop={1}>
-                            <Grid item xs marginLeft={10}>
-                                <FormControlLabel
-                                    control={<Checkbox value="loggedIn" color="primary"/>}
-                                    label="Keep me logged in"
-                                />
-                            </Grid>
-                            <Grid item  marginRight={15} >
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                        </Grid>
+                                return errors;
+                            }}
+                            onSubmit={(values, { setSubmitting }) => {
+                                setTimeout(() => {
+                                    setSubmitting(false);
+                                    console.log(values);
+                                    localStorage.setItem('Email', values.email);
+                                    localStorage.setItem('Password', values.password);
+                                    
+                                }, 500);
+                            }}
+                        >
+                            {props => {
+                                const {
+                                    values,
+                                    touched,
+                                    errors,
+                                    isSubmitting,
+                                    handleChange,
+                                    handleBlur,
+                                    handleSubmit
+                                } = props;
+                                return (
+                                    <form onSubmit={handleSubmit} noValidate>
+                                        <Stack style={{ marginLeft: '31%' }}>
+                                            <label>Email<a style={{ color: '#4318FF' }}>*</a></label>
+                                            <TextField
+                                                required
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                autoComplete='new-email'
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                className={errors.email && touched.email && "error"}
+                                                style={{ maxWidth: '50%', background: '#eaeef7' }}
+                                            />
+                                            {errors.email && touched.email && (
+                                                <div style={{color:'red'}}>{errors.email}</div>
+                                            )}
+                                        </Stack>
 
-                        <Box>
-                        <Button
-                            type="submit"  variant="contained" style={{ mt: 2, width:'50%' }} >
-                            Sign In
-                        </Button>
-                        </Box>
+                                        <Stack style={{ marginTop: '5%', marginLeft: '31%' }}>
+                                            <label>Password<a style={{ color: '#4318FF', textDecoration: 'none' }}>*</a></label>
+                                            <TextField
+                                                required
+                                                name="password"
+                                                id="password"
+                                                autoComplete='new-password'
+                                                style={{ maxWidth: '50%', background: '#eaeef7', borderRadius: '10%' }}
+                                                type={passwordType}
+                                                onChange={handlePasswordChange}
+                                                value={passwordInput}
+                                                class="form-control"
+                                                placeholder="Min. 8 characters"
+                                                value={values.password}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                className={errors.password && touched.password && "error"}
 
 
-                        <Grid>
-                            <Link href="#" variant="body2">
-                                {"Not registered yet? Create an Account"}
-                            </Link>
-                        </Grid>
+                                                InputProps={{
+                                                    endAdornment: passwordType ? (
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                onClick={togglePassword}
+                                                                edge="end"
+                                                            >
+                                                                {passwordType === 'password' ? <VisibilityIcon style={{ fill: '#A3AED0', maxHeight: '2vh' }} /> : <VisibilityOffIcon style={{ fill: '#A3AED0', maxHeight: '2vh' }} />}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    ) : null
+                                                }}
+                                            />
+                                            {errors.password && touched.password && (
+                                                <div style={{color:'red'}}>{errors.password}</div>
+                                            )}
+                                        </Stack>
+
+                                        <Grid container justifyContent='center'>
+                                            <Grid item>
+                                                <FormControlLabel
+                                                    control={<Checkbox value="loggedIn" />}
+                                                    label="Keep me logged in"
+                                                />
+                                            </Grid>
+                                            <Grid item marginTop={1}>
+                                                <Link href="#" variant="body2" style={{ color: '#4318FF', textDecoration: 'none' }}>
+                                                    Forgot password?
+                                                </Link>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Box style={{ marginLeft: '31%' }}>
+                                            <Button
+                                                type="submit" variant="contained" style={{ mt: 2, width: '54%', background: '#4318FF' }} disabled={isSubmitting} >
+                                                Sign In
+                                            </Button>
+                                        </Box>
+
+
+                                        <Grid style={{ justifyContent: 'center' }}>
+                                            <div style={{ display: 'flex', marginLeft: '27%' }}>
+                                                Not registerd yet?
+                                                <span>
+                                                    <a style={{ color: '#4318FF' }}>Create an account</a>
+                                                </span>
+                                            </div>
+                                        </Grid>
+                                    </form>
+                                )
+                            }}
+                        </Formik>
                     </Box>
                 </Grid>
 
