@@ -497,7 +497,7 @@ export default function Home() {
               </Stack>
               <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '10px' }}>
                 <Toolbar sx={{ background: 'white' }}>
-                  <Box sx={{ flexGrow: 1 }}>
+                  <Box sx={{ flexGrow: 1 }}>      
                     <AvatarGroup total={22}>
                       <Avatar src='https://randomuser.me/api/portraits/men/22.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
                       <Avatar src='https://randomuser.me/api/portraits/women/74.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>

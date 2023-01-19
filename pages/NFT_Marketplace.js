@@ -7,16 +7,43 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import CheckedTableDash from '../components/CheckedTableDash';
 import market from '../public/images/Products 2.png';
+import { useState } from 'react';
+import Art from '../components/Art';
+import Music from '../components/Music';
+import Collectibles from '../components/Collectibles';
+import Sports from '../components/Sports';
 
 
 
 
 const NFT_Marketplace = () => {
+  const [selectedMenu, setSelectedMenu]= useState('art');
+  const handleClick = envt =>{
+    let category = envt.target.value;
+    setSelectedMenu(category);
+  }
+ 
+
+  const conditionRender = selectedMenu => {
+    if (selectedMenu === 'art') {
+      return <Art />
+    }
+    if (selectedMenu === 'music') {
+      return <Music />
+    }
+    if (selectedMenu === 'collectibles') {
+      return <Collectibles />
+    }
+    if (selectedMenu === 'sports') {
+      return <Sports />
+    }
+  }
+
   return (
     <>
       <Box sx={{ padding: (theme) => theme.spacing(2), }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
-          <Grid item xs={12} sm={12} md={8} lg={7} xl={7}>
+          <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
             <Box sx={{
               background: '#fff',
               borderRadius: '10px',
@@ -38,20 +65,20 @@ const NFT_Marketplace = () => {
                   </Typography>
                   <Box sx={{ flexGrow: 1 }} />
                   <Box sx={{ display: 'flex' }}>
-                    <IconButton size='small' style={{ color: "#2b3674", }}>
+                    <IconButton size='small' onClick={evnt => handleClick(evnt)}  value='art' style={{ color: "#2b3674", }}>
                       Art
                     </IconButton>
-                    <IconButton size='small'
+                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='music'
                       style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Music
                     </IconButton>
-                    <IconButton size='small'
+                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='collectibles'
                       style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Collectibles
                     </IconButton>
-                    <IconButton size='small'
+                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='sports'
                       style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Sports
@@ -60,8 +87,16 @@ const NFT_Marketplace = () => {
                 </Toolbar>
               </AppBar>
             </Box>
+            <Box>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+          <Grid item xs={4} sm={12} md={4} lg={4} xl={4}>
+            {conditionRender(selectedMenu)}
+            </Grid>
+            </Grid>
+            </Box>
+          
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={5} xl={5}>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
             <CheckedTableDash />
           <Box sx={{mt:2}}>
           <CheckedTableDash />
