@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import IconButton from '@mui/material/IconButton';

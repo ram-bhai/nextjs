@@ -38,9 +38,9 @@ const Art = () => {
   return (
     <Box >
       <Grid container rowSpacing={0.5}>
-        <Grid item xs>
+        <Grid item>
           {arts.map((art) => (
-              <Card sx={{  maxHeight: 270, borderRadius: 2 }} key={art.id}>
+              <Card sx={{ borderRadius: 2 }} key={art.id}>
                 <Image src={art.image} alt="finger" width={100} height={100} style={{marginLeft:'25%', marginTop:'4%'}} />
                 <CardContent display="flex">
                   <Typography variant="subtitle2" fontWeight='bold' color="#2B3674">
@@ -74,8 +74,15 @@ const Art = () => {
       </Grid>
 
       <Grid container rowSpacing={1} >
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <h1>Data</h1>
+        <Grid item >
+        <Typography
+                    variant="h6"
+                    noWrap
+                    edge="start"
+                    sx={{ color: "#2b3674", fontWeight: "Bold" }}
+                  >
+                    Recently added
+                  </Typography>
         </Grid>
         
       </Grid>

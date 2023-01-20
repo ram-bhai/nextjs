@@ -42,7 +42,7 @@ const NFT_Marketplace = () => {
   return (
     <>
       <Box sx={{ padding: (theme) => theme.spacing(2), }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
           <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
             <Box sx={{
               background: '#fff',

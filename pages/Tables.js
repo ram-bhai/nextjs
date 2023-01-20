@@ -198,7 +198,7 @@ export default function EnhancedTable() {
 
   return (
     <Box sx={{padding: (theme) => theme.spacing(1)}}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
         <Grid items lg={6} xs={12} sm={12} md={6} xl={6}>
           <Paper sx={{ width: '100%', mb: 2 }}>
             <EnhancedTableToolbar />
@@ -255,7 +255,7 @@ export default function EnhancedTable() {
         </Grid> 
         
         </Grid>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
         <Grid items lg={6} xs={12} sm={12} md={6} xl={6}>
           <Columntable/>
         </Grid>
