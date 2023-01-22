@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Image from 'next/image';
+import Link from 'next/link';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Toolbar from '@mui/material/Toolbar';
@@ -22,10 +23,15 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import EditIcon from '@mui/icons-material/Edit';
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Button from '@mui/material/Button';
 import profile from '../public/images/profile.png';
+import projectPic1 from '../public/images/shubham-dhage-JlijbOtSWuw-unsplash 1.png';
+import projectPic2 from '../public/images/tech-daily-HpekD5ujnbQ-unsplash 1.png';
+import projectPic3 from '../public/images/nubelson-fernandes-Xx4i6wg6HEg-unsplash 1.png';
+
 
 
 
@@ -106,7 +112,7 @@ const Profile = () => {
     "Item update notifications": false,
     "Item comment notifications": false,
     "Buyer review notifications": false,
-  "Rating reminders notifications": false,
+    "Rating reminders notifications": false,
     "Meetups near you notifications": false,
     "Company news notifications": false,
     "New launches and projects": false,
@@ -157,7 +163,41 @@ const Profile = () => {
 
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card>
-              <h1>Hello vinod</h1>
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+                sx={{ mt: 2 }}
+              >
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Card>
+                    <FileUploadRoundedIcon style={{ fill: "#4318FF", height: '100%' }} />
+                  </Card>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Card elevation={0}>
+                    <CardHeader
+                      title={
+                        <Typography variant="h5" fontWeight='bold' color="#2B3674">
+                          Complete your profile
+                        </Typography>
+                      }
+                    />
+                    <CardContent>
+                      <Typography variant="body2" color="#A3AED0">
+                        Stay on the pulse of distributed projects with an anline whiteboard to plan, coordinate and discuss
+                      </Typography>
+                    </CardContent>
+                    <CardActions >
+                      <Button variant="contained" style={{
+                        background: '#3965FF',
+                        borderRadius: '10px'
+                      }}>publish</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              </Grid>
             </Card>
           </Box>
         </Grid>
@@ -167,7 +207,105 @@ const Profile = () => {
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card>
-              <h1>Hello vinod</h1>
+              <CardHeader
+                title={
+                  <Typography variant="h5" fontWeight='bold' color="#2B3674">
+                    All Projects
+                  </Typography>
+                }
+              />
+              <CardContent>
+                <Typography variant="body2" color="#A3AED0">
+                  Here you can find more details about your projects.
+                  Keep you user engaged by providing meaningful information.
+                </Typography>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} sx={{ mt: 2 }}>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Card elevation={6}>
+                      <CardHeader
+                        avatar={
+                          <Image src={projectPic1} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                        }
+                        action={
+                          <IconButton aria-label="settings">
+                            <EditIcon style={{ fill: "#8F9BBA" }} />
+                          </IconButton>
+                        }
+                        title={
+                          <Typography variant="caption" fontWeight='bold' color="#2B3674">
+                            Technology behind the Blockchain
+                          </Typography>
+
+                        }
+
+                        subheader={
+
+                          <Typography variant="caption" color="#A3AED0">
+                            <br />
+                            Project #1. <Link href='/' style={{ color: '#4318FF' }}>See project details</Link>
+                          </Typography>
+                        }
+                      />
+                    </Card>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Card elevation={6}>
+                      <CardHeader
+                        avatar={
+                          <Image src={projectPic2} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                        }
+                        action={
+                          <IconButton aria-label="settings">
+                            <EditIcon style={{ fill: "#8F9BBA" }} />
+                          </IconButton>
+                        }
+                        title={
+                          <Typography variant="caption" fontWeight='bold' color="#2B3674">
+                            Greatest way to a good Economy
+                          </Typography>
+
+                        }
+
+                        subheader={
+
+                          <Typography variant="caption" color="#A3AED0">
+                            <br />
+                            Project #2. <Link href='/' style={{ color: '#4318FF' }}>See project details</Link>
+                          </Typography>
+                        }
+                      />
+                    </Card>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Card elevation={6}>
+                      <CardHeader
+                        avatar={
+                          <Image src={projectPic3} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                        }
+                        action={
+                          <IconButton aria-label="settings">
+                            <EditIcon style={{ fill: "#8F9BBA" }} />
+                          </IconButton>
+                        }
+                        title={
+                          <Typography variant="caption" fontWeight='bold' color="#2B3674">
+                            Most essential tips for Burnout
+                          </Typography>
+
+                        }
+
+                        subheader={
+
+                          <Typography variant="caption" color="#A3AED0">
+                            <br />
+                            Project #3. <Link href='/' style={{ color: '#4318FF' }}>See project details</Link>
+                          </Typography>
+                        }
+                      />
+                    </Card>
+                  </Grid>
+                </Grid>
+              </CardContent>
             </Card>
           </Box>
         </Grid>
@@ -175,7 +313,91 @@ const Profile = () => {
         <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card>
-              <h1>Hello vinod</h1>
+              <CardHeader
+                title={
+                  <Typography variant="h5" fontWeight='bold' color="#2B3674">
+                    General Information
+                  </Typography>
+                }
+              />
+              <CardContent>
+                <Typography variant="body2" color="#A3AED0">
+                  As we live, our hearts turn colder.
+                  Cause pain is what we go through as we become older.
+                  We get insulted by others, lose trust for those others.
+                  We get back stabbed by friends. It becomes harder for us to give others a hand.
+                  We get our heart broken by people we love, even that we give them all...
+                </Typography>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} sx={{ mt: 1 }}>
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6} >
+                      <Typography sx={{ m: 1 }} color="#A3AED0" gutterBottom>
+                        Education
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        Stanford University
+                      </Typography>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6}>
+                      <Typography sx={{ m: 1 }} color="#A3AED0" >
+                        Languages
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        English, Spanish, Italian
+                      </Typography>
+                    </Card>
+                  </Grid>
+                </Grid>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} sx={{ mt: 2 }}>
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6}>
+                      <Typography sx={{ m: 1 }} color="#A3AED0" >
+                        Department
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        Product Design
+                      </Typography>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6}>
+                      <Typography sx={{ m: 1 }} color="#A3AED0" >
+                        Work History
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        Google, Facebook
+                      </Typography>
+                    </Card>
+                  </Grid>
+                </Grid>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} sx={{ mt: 2 }}>
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6}>
+                      <Typography sx={{ m: 1 }} color="#A3AED0" >
+                        Organization
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        Simmmple Web LLC
+                      </Typography>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <Card elevation={6}>
+                      <Typography sx={{ m: 1 }} color="#A3AED0" >
+                        Birthday
+                      </Typography>
+                      <Typography variant="subtitle" sx={{ m: 1 }} color="#2B3674">
+                        20 July 1986
+                      </Typography>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </CardContent>
             </Card>
           </Box>
         </Grid>
@@ -201,19 +423,19 @@ const Profile = () => {
                 </Toolbar>
               </AppBar>
 
-              <Box sx={{mt:1,marginLeft:1}}>
+              <Box sx={{ mt: 1, marginLeft: 1 }}>
                 <FormControl component="fieldset" variant="standard">
                   <FormGroup>
                     {
                       Object.keys(state).map((key, index) => {
                         return (
-                          < FormControlLabel sx={{color:'#2B3674'}}
-                          control={
-                            
-                              <IOSSwitch sx={{ m: 1 }} checked={state[index]?.[key]} onChange={handleChange} name={key}/>
-                            
-                          }
-                          label={key}
+                          < FormControlLabel sx={{ color: '#2B3674' }}
+                            control={
+
+                              <IOSSwitch sx={{ m: 1 }} checked={state[index]?.[key]} onChange={handleChange} name={key} />
+
+                            }
+                            label={key}
                           />
                         )
                       })
