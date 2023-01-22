@@ -50,7 +50,7 @@ const Kanban = () => {
                 </Tooltip>
               </Toolbar>
             </AppBar>
-            <Card sx={{maxWidth:'auto',mt:2 }}>
+            <Card  elevation={6} sx={{maxWidth:'auto',mt:2 }}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -83,7 +83,7 @@ const Kanban = () => {
             </Card>
 
 
-            <Card sx={{maxWidth:'auto',mt:2}}>
+            <Card sx={{maxWidth:'auto',mt:2}} elevation={6}>
             <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -124,7 +124,7 @@ const Kanban = () => {
       </CardActions> 
     </Card>
 
-    <Card sx={{maxWidth:'auto',mt:2 }}>
+    <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -155,8 +155,6 @@ const Kanban = () => {
                 </ExpandMore>
               </CardActions>
             </Card>
-
-
           </Box>
         </Grid>
 
@@ -182,7 +180,7 @@ const Kanban = () => {
             </AppBar>
 
             
-    <Card sx={{maxWidth:'auto',mt:2 }}>
+    <Card sx={{maxWidth:'auto',mt:2 }}elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -216,7 +214,7 @@ const Kanban = () => {
             </Card>
 
             
-    <Card sx={{maxWidth:'auto',mt:2 }}>
+    <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -247,7 +245,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2}}>
+            <Card sx={{maxWidth:'auto',mt:2}} elevation={6}>
             <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -310,7 +308,7 @@ const Kanban = () => {
               </Toolbar>
             </AppBar>
 
-            <Card sx={{maxWidth:'auto',mt:2 }}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -341,7 +339,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2 }}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -374,7 +372,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2 }}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">

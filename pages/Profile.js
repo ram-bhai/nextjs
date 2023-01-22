@@ -5,9 +5,9 @@ import Link from 'next/link';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -24,6 +24,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import EditIcon from '@mui/icons-material/Edit';
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
+import CloudDoneOutlinedIcon from '@mui/icons-material/CloudDoneOutlined';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Button from '@mui/material/Button';
@@ -153,7 +154,45 @@ const Profile = () => {
 
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card >
-              <h1>Hello vinod</h1>
+              <CardHeader
+                action={
+                  <Tooltip title="More">
+                    <Box sx={{
+                      background: '#eaeef7',
+                      borderRadius: '25%',
+                    }}>
+                      <IconButton>
+                        <MoreHorizIcon style={{ fill: "#4318FF" }} />
+                      </IconButton>
+                    </Box>
+                  </Tooltip>
+                }
+              />
+              <CardContent sx={{ marginLeft: '25%' }}>
+                <Box
+                  sx={{
+                    textAlign: 'center',
+                    height: '100px',
+                    width: '100px',
+                    background: '#eaeef7',
+                    borderRadius: '50%',
+                  }}
+                >
+                  <IconButton>
+                    <CloudDoneOutlinedIcon
+                      style={{ marginTop: '5vh', fill: '#4318FF' }}
+                    />
+                  </IconButton>
+                </Box>
+                <Typography variant="h6" fontWeight="bold" color="#2B3674">
+                  Your storage
+                  <br />
+                </Typography>
+                <Typography variant="body2" fontSize={10} color="#A3AED0" sx={{textAlign:'center',marginRight:'5vw'}}>
+                  Supervise your drive space in the easiest way
+                </Typography>
+              </CardContent>
+              <CardActions></CardActions>
             </Card>
           </Box>
         </Grid>
@@ -170,8 +209,26 @@ const Profile = () => {
                 sx={{ mt: 2 }}
               >
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <Card>
-                    <FileUploadRoundedIcon style={{ fill: "#4318FF", height: '100%' }} />
+                  <Card style={{
+                    borderWidth: 1,
+                    borderStyle: 'dashed',
+                    borderColor: '#A3AED0',
+                    borderRadius: 5,
+                    marginTop: '7vh',
+                    margin: '2%',
+                    padding: '4%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                  }}>
+                    <CardContent>
+                      <FileUploadRoundedIcon style={{ fill: "#4318FF" }} />
+                      <Typography variant="h6" fontWeight='bold' color="#4318FF">
+                        Upload Files
+                        <br />
+                      </Typography>
+                      <Typography variant='caption' fontSize={7} color="#A3AED0" >PNG, JPG and GIF files are allowed</Typography>
+                    </CardContent>
                   </Card>
                 </Grid>
 
@@ -179,7 +236,7 @@ const Profile = () => {
                   <Card elevation={0}>
                     <CardHeader
                       title={
-                        <Typography variant="h5" fontWeight='bold' color="#2B3674">
+                        <Typography variant="body2" fontWeight='bold' color="#2B3674">
                           Complete your profile
                         </Typography>
                       }
