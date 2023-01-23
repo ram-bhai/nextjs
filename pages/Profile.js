@@ -23,12 +23,15 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import EditIcon from '@mui/icons-material/Edit';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import CloudDoneOutlinedIcon from '@mui/icons-material/CloudDoneOutlined';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Button from '@mui/material/Button';
-import profile from '../public/images/profile.png';
+import profile from '../public/images/charlie-green-3JmfENcL24M-unsplash.png';
+import bg from '../public/images/bg.png';
 import projectPic1 from '../public/images/shubham-dhage-JlijbOtSWuw-unsplash 1.png';
 import projectPic2 from '../public/images/tech-daily-HpekD5ujnbQ-unsplash 1.png';
 import projectPic3 from '../public/images/nubelson-fernandes-Xx4i6wg6HEg-unsplash 1.png';
@@ -42,6 +45,18 @@ const ExpandMore = styled((props) => {
   return <Button {...other} />;
 })(() => ({
   marginLeft: 'auto',
+}));
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === 'light' ? '#4318FF' : '#308fe8',
+  },
 }));
 
 const IOSSwitch = styled((props) => (
@@ -109,6 +124,24 @@ const Profile = () => {
     fetchData();
   }, []);
 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+
+  useEffect(() => {
+    if (selectedImage) {
+      setImageUrl(URL.createObjectURL(selectedImage));
+    }
+  }, [selectedImage]);
+
+  let handleToggle = () => {
+    setSelectedImage ('');
+    setImageUrl('');
+  
+  }
+
+  const progress = 50;
+  const total = 100;
+
   const [state, setState] = useState({
     "Item update notifications": false,
     "Item comment notifications": false,
@@ -134,26 +167,74 @@ const Profile = () => {
       <Grid container rowSpacing={0.5} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
         <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
-            <Card>
-              <CardMedia
-                component="img"
-                height="150"
-                width="100%"
-                image="/images/Background Image.png"
-                alt="Paella dish"
-                sx={{ padding: '2%', borderRadius: '30px' }}
-              />
-              <Image src={profile} height={100} width={100} style={{ borderRadius: "50%" }} />
+            <Card elevation={0} style={{
+              backgroundImage: `url(${bg.src})`,
+              backgroundRepeat: 'no-repeat',
+              textAlign: 'center'
+            }}>
+              <CardContent>
+                <Image
+                  src={profile}
+                  height={100} width={100}
+                  style={{
+                    borderRadius: '50%',
+                    borderStyle: 'solid',
+                    borderWidth: 3,
+                    borderColor: '#fff',
+                    marginTop: '10vh'
+                  }} />
 
+                <Typography variant="h5" fontWeight='bold' color="#2B3674">
+                  Adela Parkson
+                  <br />
+                </Typography>
+                <Typography variant='caption' fontSize={12} color="#A3AED0" >
+                  Product Designer
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Box sx={{ display: 'flex', textAlign: 'center', margin: 1 }}>
+                  <Box sx={{ textAlign: 'end', marginLeft: '50%' }}>
+                    <Typography variant="h4" fontWeight='bold' color="#2B3674">
+                      17
+                      <br />
+                    </Typography>
+                    <Typography variant='subtitle' color="#A3AED0" >
+                      Posts
+                    </Typography>
+                  </Box>
+
+
+                  <Box sx={{ textAlign: 'center', marginLeft: '22%' }}>
+                    <Typography variant="h4" fontWeight='bold' color="#2B3674">
+                      9.7
+                      <br />
+                    </Typography>
+                    <Typography variant='subtitle' color="#A3AED0" >
+                      Following
+                    </Typography>
+                  </Box>
+
+
+                  <Box sx={{ textAlign: 'start', marginLeft: '22%' }}>
+                    <Typography variant="h4" fontWeight='bold' color="#2B3674">
+                      274
+                      <br />
+                    </Typography>
+                    <Typography variant='subtitle' color="#A3AED0" >
+                      Followers
+                    </Typography>
+                  </Box>
+                </Box>
+              </CardActions>
             </Card>
           </Box>
         </Grid>
 
 
         <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
-            <Card >
+            <Card>
               <CardHeader
                 action={
                   <Tooltip title="More">
@@ -168,7 +249,7 @@ const Profile = () => {
                   </Tooltip>
                 }
               />
-              <CardContent sx={{ marginLeft: '25%' }}>
+              <CardContent sx={{ marginLeft: '28%' }}>
                 <Box
                   sx={{
                     textAlign: 'center',
@@ -180,26 +261,37 @@ const Profile = () => {
                 >
                   <IconButton>
                     <CloudDoneOutlinedIcon
-                      style={{ marginTop: '5vh', fill: '#4318FF' }}
+                      style={{ marginTop: '120%', fill: '#4318FF' }}
                     />
                   </IconButton>
                 </Box>
-                <Typography variant="h6" fontWeight="bold" color="#2B3674">
+                <Typography sx={{ marginLeft: '-15%' }} variant="h5" fontWeight="bold" color="#2B3674">
                   Your storage
                   <br />
                 </Typography>
-                <Typography variant="body2" fontSize={10} color="#A3AED0" sx={{textAlign:'center',marginRight:'5vw'}}>
+                <Typography variant="caption" color="#A3AED0" sx={{ marginLeft: '-30%' }} >
                   Supervise your drive space in the easiest way
                 </Typography>
               </CardContent>
-              <CardActions></CardActions>
+              <Box style={{ margin: 20 }}>
+                <Grid container>
+                  <Grid items xs={8} color="#A3AED0">
+                    {progress} Gb
+                  </Grid>
+                  <Grid items xs={4}>
+                    <Box sx={{ textAlign: 'end', color: '#A3AED0' }}>
+                      {total} Gb
+                    </Box>
+                  </Grid>
+                </Grid>
+                <BorderLinearProgress variant="determinate" value={total * (progress / total)} />
+              </Box>
             </Card>
           </Box>
         </Grid>
 
 
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card>
               <Grid
@@ -214,39 +306,85 @@ const Profile = () => {
                     borderStyle: 'dashed',
                     borderColor: '#A3AED0',
                     borderRadius: 5,
-                    marginTop: '7vh',
-                    margin: '2%',
+                    marginTop: '13vh',
+                    margin: '4%',
                     padding: '4%',
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center'
                   }}>
-                    <CardContent>
-                      <FileUploadRoundedIcon style={{ fill: "#4318FF" }} />
-                      <Typography variant="h6" fontWeight='bold' color="#4318FF">
-                        Upload Files
-                        <br />
-                      </Typography>
-                      <Typography variant='caption' fontSize={7} color="#A3AED0" >PNG, JPG and GIF files are allowed</Typography>
-                    </CardContent>
+
+                    {!imageUrl && !selectedImage && (
+                      <CardContent>
+                        
+                        <input
+                          accept="image/*"
+                          type="file"
+                          id="select-image"
+                          style={{ display: 'none' }}
+                          onChange={e => setSelectedImage(e.target.files[0])}
+                        />
+                        <label htmlFor="select-image">
+                        <FileUploadRoundedIcon style={{ fill: "#4318FF" }} />
+                          <Button variant="text" style={{ color: "#4318FF", fontWeight: 'bold' }} component="span">
+                            Upload Files
+                            <br />
+                          </Button>
+                        </label>
+                        <Typography variant='caption' fontSize={7} color="#A3AED0" >
+                          PNG, JPG and GIF files are allowed
+                        </Typography>
+                      </CardContent>
+                    )}
+
+
+                    {imageUrl && selectedImage && (
+                     <CardContent>
+                      <Card>
+                        <CardHeader 
+                        action={
+                          <Tooltip title="Close">
+                            <Box sx={{background:"#eaeef7", borderRadius:'50%'}}>
+                          <IconButton>
+                        <CloseOutlinedIcon  style={{fill:"#4318FF", height:'15px', width:'15px'}} onClick={handleToggle} />
+                      </IconButton>
+                      </Box>
+                      </Tooltip>
+                        }
+                        title={<Typography variant="caption"  color="#2B3674">
+                         Preview
+                      </Typography>}
+                        />
+                        <CardContent>
+                        <Image  src={imageUrl} alt={selectedImage.name} height={100} width={100}/>
+                        </CardContent>
+                      </Card>
+                      
+                     
+                     </CardContent>
+                    
+                    )}
+
                   </Card>
                 </Grid>
+
 
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <Card elevation={0}>
                     <CardHeader
                       title={
-                        <Typography variant="body2" fontWeight='bold' color="#2B3674">
+                        <Typography variant="subtitle2" fontWeight='bold' color="#2B3674">
                           Complete your profile
                         </Typography>
                       }
                     />
                     <CardContent>
-                      <Typography variant="body2" color="#A3AED0">
-                        Stay on the pulse of distributed projects with an anline whiteboard to plan, coordinate and discuss
+                      <Typography variant="subtitle" color="#A3AED0">
+                        Stay on the pulse of distributed projects with an anline whiteboard to plan,
+                        coordinate and discuss
                       </Typography>
                     </CardContent>
-                    <CardActions >
+                    <CardActions sx={{ m: 2 }}>
                       <Button variant="contained" style={{
                         background: '#3965FF',
                         borderRadius: '10px'
