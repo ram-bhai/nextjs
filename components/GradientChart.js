@@ -1,11 +1,6 @@
 import { Bar } from "react-chartjs-2";
 import {Chart as ChartJs, Tooltip, Legend, CategoryScale, BarElement } from 'chart.js';
 ChartJs.register(Tooltip,Legend, CategoryScale,BarElement);
-// #C8BCFF , #4318FF
-
-
-
-
 
 
 
@@ -16,8 +11,10 @@ const options = {
                 color: '#A3AED0'
             },
           grid: {
-            display: false,
+            lineWidth: 0,
+            drawBorder: false,
           },
+          
         },
         y: {
             ticks: {
@@ -26,15 +23,26 @@ const options = {
             grid: {
               display: false,
             },
-            max:100
+            beginAtZero:true,
+            max:100,
+            display:false
           },
       },
-    responsive: true,
-    
+      plugins: {
         legend: {
             display: false,
         },
-   
+        tooltip:{
+            displayColors: false,
+            yAlign:'bottom',
+            backgroundColor: 'rgb(79,39,255)',
+            bodyColor:'#fff',
+            titleColor:'#fff'
+        }
+
+    },
+    responsive: true,
+    
 
 };
 
@@ -45,7 +53,7 @@ const data = {
     datasets: [
         {
             label: 'users',
-            data: [70, 82, 93, 74,65,20,22],
+            data: [70, 82, 93, 74,25,10,22,60,40,53],
             backgroundColor: (context)=>{
                 const chart = context.chart;
                 const {ctx, chartArea} = chart;
@@ -54,7 +62,9 @@ const data = {
                 }
                 return getGradient(chart);
             },
-            borderRadius: '20'
+            borderRadius: '20',
+            barThickness: 10,
+            maxBarThickness: 20,
         }
     ]
 }
@@ -71,7 +81,7 @@ function getGradient(chart){
 
 
 const GradientChart = (() => {
-    return <Bar   data={data}/>
+    return <Bar  data={data} options={options}/>
 
 })
 

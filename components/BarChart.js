@@ -23,6 +23,7 @@ const options = {
             },
             beginAtZero:true,
             max:100,
+            display:false
           },
       },
    
@@ -30,6 +31,13 @@ const options = {
         legend: {
             display: false,
         },
+        tooltip:{
+            displayColors: false,
+            yAlign:'bottom',
+            backgroundColor: 'rgb(230,237,249)',
+            bodyColor:'#775FFC',
+            titleColor:'#775FFC'
+        }
     },
    
 
@@ -43,6 +51,8 @@ const data = {
         {
             label: 'users',
             data: [70, 62, 80, 64,71,80,72],
+            barThickness: 18,
+            maxBarThickness: 20,
             backgroundColor: (context)=>{
                 const chart = context.chart;
                 const {ctx, chartArea} = chart;
@@ -67,6 +77,11 @@ function getGradient(chart){
     gredientSegment.addColorStop(1,'#E6EDF9');
 
     return gredientSegment;
+}
+
+function colorItems(tooltipItem){
+    const bgColor =  tooltipItem.tooltip.labelColors[0];
+    return bgColor;
 }
 
 

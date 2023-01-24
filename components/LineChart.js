@@ -25,13 +25,24 @@ export default function LineChart(){
             grid: {
               display: false,
             },
+            display:false
           },
+          
       },
     responsive: true,
     plugins: {
         legend: {
           display:false
         },
+        tooltip:{
+          displayColors: false,
+          yAlign:'bottom',
+          backgroundColor: 'rgb(67,24,255)',
+          bodyColor:'#fff',
+          titleColor:'#fff',
+          bodyAlign:'center',
+         
+      }
     },
     elements: {
       point:{
@@ -52,7 +63,6 @@ export default function LineChart(){
         {
           label:"Services",
           data:[15,28,28,22,19,50,43],
-         
           borderColor:'#6AD2FF',
           tension:'0.4'
         }
