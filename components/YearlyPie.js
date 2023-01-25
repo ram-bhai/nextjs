@@ -27,7 +27,7 @@ const data = {
     datasets: [
       {
         
-        data: [63, 25, 12],
+        data: [40, 40, 20],
         backgroundColor: [
           'rgba(67,  24, 255)',
           'rgba(106, 210, 255)',
@@ -43,10 +43,10 @@ const data = {
     ],
   };
 
-const PieChart = () => {
+const YearlyPie = () => {
   return (<Pie data={data} options={options}></Pie>
     
   )
 }
 
-export default PieChart
+export default YearlyPie;

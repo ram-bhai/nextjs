@@ -1,5 +1,6 @@
 
 import Box from '@mui/material/Box';
+import React, {useState} from 'react';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import AppBar from '@mui/material/AppBar';
@@ -8,6 +9,10 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
@@ -44,6 +49,8 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
+import WeeklyPie from '../components/WeeklyPie';
+import YearlyPie from '../components/YearlyPie';
 
 
 const Item = styled(Box)(({ theme }) => ({
@@ -57,6 +64,23 @@ const Item = styled(Box)(({ theme }) => ({
 
 
 export default function Home() {
+  const [duration, setDuration] = React.useState(30);
+
+  const handleChange = (event) => {
+    setDuration(event.target.value);
+  };
+
+  const conditionRender = duration => {
+    if (duration === 7) {
+      return <WeeklyPie />
+    }
+    if (duration === 30) {
+      return <PieChart />
+    }
+    if (duration === 365) {
+      return <YearlyPie />
+    }
+  }
 
   return (
     <>
@@ -378,32 +402,38 @@ export default function Home() {
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
             <Box sx={{
-              height: '50vh',
+              height: 'auto',
               background: '#fff',
-              borderRadius: '10px', 
+              borderRadius: '10px',
             }}>
-               <Card sx={{ minWidth: '100%', p: 0 }} elevation={0}>
+              <Card sx={{ minWidth: '100%' }} elevation={0}>
                 <CardHeader
                   action={
-                    <Tooltip title="More">
-                      <Box sx={{
-                        background: '#eaeef7',
-                        borderRadius: '25%',
-                      }}>
-                        <IconButton>
-                          <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
-                        </IconButton>
-                      </Box>
-                    </Tooltip>
+                   
+                      <FormControl sx={{ m: 1, minWidth:85 }} size="small">
+                        <InputLabel id="demo-select-small" shrink={false}></InputLabel>
+                        <Select
+                          labelId="demo-select-small"
+                          id="demo-select-small"
+                          fontWeight='bold'
+                          value={duration}
+                          onChange={handleChange}
+                        >
+                          <MenuItem value={7}>Weekly</MenuItem>
+                          <MenuItem value={30}>Monthly</MenuItem>
+                          <MenuItem value={365}>Yearly</MenuItem>
+                        </Select>
+                      </FormControl>
+                 
                   }
                   title={
-                    <Typography variant="title" color="#A3AED0">
-                      Your profile
+                    <Typography variant='h6' fontWeight='bold' color='#2B3674'>
+                      Your pie chart
                     </Typography>
                   }
                 />
               </Card>
-              <PieChart />
+              {conditionRender(duration)}
             </Box>
           </Grid>
         </Grid>

@@ -6,6 +6,7 @@ const options = {
     plugins: {
         legend: {
             position: 'bottom',
+            display:true,
             labels: {
                 usePointStyle: true,
               }
@@ -27,7 +28,7 @@ const data = {
     datasets: [
       {
         
-        data: [63, 25, 12],
+        data: [23, 45, 32],
         backgroundColor: [
           'rgba(67,  24, 255)',
           'rgba(106, 210, 255)',
@@ -43,10 +44,10 @@ const data = {
     ],
   };
 
-const PieChart = () => {
+const WeeklyPie = () => {
   return (<Pie data={data} options={options}></Pie>
     
   )
 }
 
-export default PieChart
+export default WeeklyPie;
