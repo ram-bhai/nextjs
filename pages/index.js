@@ -357,7 +357,7 @@ export default function Home() {
           <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
             <Box>
               <Box sx={{
-                height: '50vh',
+                height: '100%',
                 background: '#fff',
                 borderRadius: '10px',
                 display: 'flex',
@@ -373,7 +373,7 @@ export default function Home() {
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
             <Box sx={{
               width: 'auto',
-              height: 'auto',
+              height: '100%',
               background: '#fff',
               borderRadius: '10px',
             }}>
@@ -403,8 +403,8 @@ export default function Home() {
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
             <Box sx={{
-              width: 'auto',
-              height: 'auto',
+              width: '100%',
+              height: '50vh',
               background: '#fff',
               borderRadius: '10px',
             }}>
@@ -435,7 +435,7 @@ export default function Home() {
                   }
                 />
               </Card>
-              <CardContent sx={{marginLeft:'10%',maxHeight:'37vh'}}>
+              <CardContent sx={{marginLeft:'10%'}}>
               {conditionRender(duration)}
               </CardContent>
             </Box>
