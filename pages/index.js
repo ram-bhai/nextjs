@@ -252,32 +252,36 @@ export default function Home() {
               borderRadius: '10px',
             }}>
 
-              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
-                <Toolbar sx={{ background: 'white' }}>
-                  <Box sx={{ flexGrow: 1 }}>
+              <Card elevation={0} sx={{borderRadius:'15%'}}>
+              <CardHeader
+                  action={
+                    <Tooltip title="More">
+                      <Box sx={{
+                        background: '#eaeef7',
+                        borderRadius: '25%',
+                      }}>
+                        <IconButton>
+                          <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
+                        </IconButton>
+                      </Box>
+                    </Tooltip>
+                  }
+                  title={
+                    <Box>
                     <CalendarTodayIcon style={{ fill: '#A3AED0', maxHeight: '2vh' }} />
                     <Typography variant='caption' fontWeight='bold' color='#A3AED0' noWrap>This month</Typography>
                   </Box>
-                  <Tooltip title="More">
-                    <Box sx={{
-                      background: '#eaeef7',
-                      borderRadius: '25%',
-                      justifyContent: 'center',
-                    }}>
-                      <IconButton>
-                        <BarChartRoundedIcon style={{ fill: "#4318FF" }} />
-                      </IconButton>
-                    </Box>
-                  </Tooltip>
-                </Toolbar>
-              </AppBar>
+                  }
+                />
+              
+              </Card>
+
+              
 
 
               <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
                 <Grid item lg={3} xs={3} sm={3} md={3} xl={3}>
                   <Box sx={{
-                    minHeight: '60vh',
-                    width: 'auto',
                     textAlign: 'center'
                   }}>
                     <Typography variant='h4' fontWeight='bold' color='#2B3674' noWrap>$37.5K</Typography>
@@ -287,7 +291,7 @@ export default function Home() {
                       </Item>
                       <Item>
                         <Typography variant='caption' color='#05CD99' noWrap>
-                          <ArrowDropUpIcon /> +2.45%
+                          <ArrowDropUpIcon /> <span style={{marginLeft:'-7px',marginTop:'-5%'}}>+2.45%</span>
                         </Typography>
                       </Item>
                     </Stack>
@@ -301,10 +305,7 @@ export default function Home() {
 
                 </Grid>
                 <Grid item lg={9} xs={9} sm={9} md={9} xl={9}>
-                  <Box sx={{
-                    height: 'auto',
-                    width: 'auto',
-                  }}>
+                  <Box >
                     <LineChart />
                   </Box>
                 </Grid>
@@ -315,14 +316,14 @@ export default function Home() {
 
           <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
             <Box sx={{
-              minHeight: '60vh',
-              width: 'auto',
+              maxHeight: '50vh',
+              minHeight: '50vh',
               background: '#fff',
               borderRadius: '10px',
-              justifyContent: 'center',
+              justifyContent: 'center'
             }}>
 
-              <Card elevation={0}>
+              <Card elevation={0} sx={{borderRadius:'15%'}}>
                 <CardHeader
                   action={
                     <Tooltip title="More">
@@ -341,9 +342,9 @@ export default function Home() {
                   }
                 />
               </Card>
-              <Box >
-                <BarChart />
-              </Box>
+              <Box style={{ marginTop:'-9%'}}>
+                <BarChart/>
+                </Box>
             </Box>
           </Grid>
         </Grid>
@@ -376,7 +377,7 @@ export default function Home() {
               background: '#fff',
               borderRadius: '10px',
             }}>
-              <Card sx={{ minWidth: '100%', p: 0 }} elevation={0}>
+              <Card sx={{ minWidth: '100%', p: 0, borderRadius:'15%'}} elevation={0}>
                 <CardHeader
                   action={
                     <ArrowDropUpIcon style={{ fill: '#05CD99', maxHeight: '3%' }} />
@@ -402,11 +403,12 @@ export default function Home() {
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
             <Box sx={{
+              width: 'auto',
               height: 'auto',
               background: '#fff',
               borderRadius: '10px',
             }}>
-              <Card sx={{ minWidth: '100%' }} elevation={0}>
+              <Card sx={{ minWidth: '100%',p:0, borderRadius:'15%' }} elevation={0}>
                 <CardHeader
                   action={
                    
@@ -427,13 +429,15 @@ export default function Home() {
                  
                   }
                   title={
-                    <Typography variant='h6' fontWeight='bold' color='#2B3674'>
+                    <Typography variant='title' fontWeight='bold' color='#2B3674'>
                       Your pie chart
                     </Typography>
                   }
                 />
               </Card>
+              <CardContent sx={{marginLeft:'10%',maxHeight:'37vh'}}>
               {conditionRender(duration)}
+              </CardContent>
             </Box>
           </Grid>
         </Grid>
@@ -512,7 +516,7 @@ export default function Home() {
                       Business Design
                     </Typography>
                     <br />
-                    <Typography variant='title' fontWeight='bold' color='#2B3674' marginLeft='5%' noWrap>
+                    <Typography variant='subtitle' fontWeight='bold' color='#2B3674' marginLeft='5%' noWrap>
                       New lession is available
                     </Typography>
                   </Box>
@@ -576,11 +580,9 @@ export default function Home() {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
-                <Toolbar sx={{ background: 'white' }}>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Team members</Typography>
-                  </Box>
+              <Card sx={{borderRadius:'15%'}} elevation={0}>
+                <CardHeader
+                action={
                   <Tooltip title="More">
                     <Box sx={{
                       background: '#eaeef7',
@@ -591,9 +593,14 @@ export default function Home() {
                       </IconButton>
                     </Box>
                   </Tooltip>
-                </Toolbar>
-              </AppBar>
-              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674', marginTop: '7%' }}>
+                }
+                title={
+                  <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Team members</Typography>
+                }
+                
+                />
+                <CardContent>
+              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674' }}>
                 <CardHeader
                   avatar={
                     <Avatar src='https://randomuser.me/api/portraits/women/79.jpg'></Avatar>
@@ -621,7 +628,7 @@ export default function Home() {
                   subheader="Product Designer"
                 />
               </Card>
-              <Card sx={{ maxWidth: 'auto', maxHeight: '20%', color: '#2B3674', marginTop: '6%' }}>
+              {/* <Card sx={{ maxWidth: 'auto', maxHeight: '10%', color: '#2B3674', marginTop: '2%' }}>
                 <CardHeader
                   avatar={
                     <Avatar src='https://randomuser.me/api/portraits/men/33.jpg'></Avatar>
@@ -634,6 +641,8 @@ export default function Home() {
                   title="Jason Statham"
                   subheader="junior graphic designer"
                 />
+              </Card> */}
+              </CardContent>
               </Card>
             </Box>
           </Grid>

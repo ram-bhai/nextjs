@@ -50,7 +50,7 @@ const data = {
     datasets: [
         {
             label: 'users',
-            data: [70, 62, 80, 64,71,80,72],
+            data: [20,35,70, 62, 80, 64,71,80,72,50],
             barThickness: 18,
             maxBarThickness: 20,
             backgroundColor: (context)=>{

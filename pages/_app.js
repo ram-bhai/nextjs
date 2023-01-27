@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
@@ -6,7 +6,7 @@ import { CacheProvider } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import lightTheme from '../public/theme/Lighttheme';
 import '../styles/globals.css';
-import {SessionProvider} from 'next-auth/react';
+import { SessionProvider } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
@@ -33,7 +33,7 @@ import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
+import NightlightIcon from '@mui/icons-material/Nightlight';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -88,7 +88,7 @@ const DrawerFooter = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  marginTop: '50px',
+  marginTop: '50%',
   ...theme.mixins.toolbar,
 }));
 
@@ -181,11 +181,11 @@ const MyApp = (props, session) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
+
   const activeRoute = router.pathname;
   const title = activeRoute === '/' ? 'Dashboard' : `${activeRoute}`;
   const currentRoute = activeRoute.split('/').pop();
-  
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -200,16 +200,15 @@ const MyApp = (props, session) => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleSignOut = () =>{
+  const handleSignOut = () => {
     localStorage.clear();
     router.push('/signin');
-   
+
   }
 
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -233,26 +232,26 @@ const MyApp = (props, session) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}  style={{ color: '#2B3674' }}>
+      <MenuItem onClick={handleMenuClose} style={{ color: '#2B3674' }}>
         <Link href="/Profile">
-      <IconButton>
-          <Image
-            src={profile}
-            alt={"Thumbnail-alt"}
-            width={30}
-            height={30}
-            style={{ marginRight: "12px", borderRadius: "50%" }}
-          />
-        </IconButton>
+          <IconButton>
+            <Image
+              src={profile}
+              alt={"Thumbnail-alt"}
+              width={30}
+              height={30}
+              style={{ marginRight: "12px", borderRadius: "50%" }}
+            />
+          </IconButton>
         </Link>
         Profile
-        </MenuItem>
-      <MenuItem onClick={handleSignOut}  style={{ color: '#2B3674' }}>
-      <IconButton  color="#AEA3D0">
-          <LogoutIcon  style={{ fill: '#AEA3D0' }}/>
+      </MenuItem>
+      <MenuItem onClick={handleSignOut} style={{ color: '#2B3674' }}>
+        <IconButton color="#AEA3D0">
+          <LogoutIcon style={{ fill: '#AEA3D0' }} />
         </IconButton>
         Logout
-        </MenuItem>
+      </MenuItem>
     </Menu>
   );
 
@@ -286,20 +285,20 @@ const MyApp = (props, session) => {
         </Search>
       </MenuItem>
       <MenuItem>
-        <IconButton  color="#AEA3D0">
-          <NotificationsNoneIcon  style={{ fill: '#AEA3D0' }}/>
+        <IconButton color="#AEA3D0">
+          <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
         </IconButton>
         <p style={{ color: '#2B3674' }}>Notifications</p>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large"  color="#AEA3D0">
-          <DarkModeIcon  style={{ fill: '#AEA3D0' }}/>
+        <IconButton size="large" color="#AEA3D0">
+          <NightlightIcon style={{ fill: '#AEA3D0' }} />
         </IconButton>
         <p style={{ color: '#2B3674' }}>Theme</p>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large"  color="#AEA3D0">
-          <InfoOutlinedIcon  style={{ fill: '#AEA3D0' }}/>
+        <IconButton size="large" color="#AEA3D0">
+          <InfoOutlinedIcon style={{ fill: '#AEA3D0' }} />
         </IconButton>
         <p style={{ color: '#2B3674' }}>Info</p>
       </MenuItem>
@@ -325,282 +324,283 @@ const MyApp = (props, session) => {
 
   return (
     <>
-    <Head>
-    <title>Horizon Free</title>
-    <meta name="description" content="Learning purpose nextjs project" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"/>
-    <link rel="icon" href="/images/HORIZON FREE.png" />
-  </Head>
+      <Head>
+        <title>Horizon Free</title>
+        <meta name="description" content="Learning purpose nextjs project" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/HORIZON FREE.png" />
+      </Head>
 
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-         <Box sx={{ display: 'flex' }}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          <AppBar position="fixed" open={open} elevation={0} >
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  marginRight: 5,
-                  ...(open && { display: 'none' }),
-                }}
-              >
-                <MenuIcon style={{ fill: '#2B3674' }} />
-              </IconButton>
-              <Typography variant="h6" color="#2B3674" fontWeight="Bold" noWrap component="div">
-                {title === 'Dashboard' ? title : currentRoute}
-              </Typography>
-
-              <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{
-                display: { xs: 'none', md: 'flex' },
-                background: '#fff',
-                borderRadius: '25px',
-                marginTop: '7px',
-                justifyContent: 'center',
-
-              }}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon style={{ fill: '#2B3674' }} />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search"
-                    inputProps={{ 'aria-label': 'search' }}
-                    style={{ color: '#2B3674' }}
-                  />
-                </Search>
-                <IconButton size="large" color="#AEA3D0">
-                  <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
-                </IconButton>
-
-                <IconButton size="large"  color="#AEA3D0">
-                  <DarkModeIcon style={{ fill: '#AEA3D0' }} />
-                </IconButton>
-
-                <IconButton size="large"  color="#AEA3D0">
-                  <InfoOutlinedIcon style={{ fill: '#AEA3D0' }} />
-                </IconButton>
+          <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar position="fixed" open={open} elevation={0} >
+              <Toolbar>
                 <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="inherit">
-                  <Image
-                    src={profile}
-                    alt={"Thumbnail-alt"}
-                    width={30}
-                    height={30}
-                    style={{ marginRight: "15px", borderRadius: "50%" }}
-                  />
-                </IconButton>
-              </Box>
-              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
                   color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: 'none' }),
+                  }}
                 >
-                  <MoreIcon />
+                  <MenuIcon style={{ fill: '#2B3674' }} />
                 </IconButton>
-                {renderMobileMenu}
-                {renderMenu}
-              </Box>
-            </Toolbar>
-          </AppBar>
-          <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
-              <Image
-                src={logo}
-                alt={"Thumbnail-alt"}
-                width={140}
-                height={20}
-                style={{ marginRight: "12px" }}
-              />
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <CloseIcon style={{ fill: '#2B3674' }} />}
-              </IconButton>
-            </DrawerHeader>
-            <Divider />
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/" className={title === 'Dashboard' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
+                <Typography variant="h6" color="#2B3674" fontWeight="Bold" noWrap component="div">
+                  {title === 'Dashboard' ? title : currentRoute}
+                </Typography>
+
+                <Box sx={{ flexGrow: 1 }} />
+                <Box sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  background: '#fff',
+                  borderRadius: '25px',
+                  marginTop: '7px',
+                  justifyContent: 'center',
+
+                }}>
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon style={{ fill: '#2B3674' }} />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search"
+                      inputProps={{ 'aria-label': 'search' }}
+                      style={{ color: '#2B3674' }}
+                    />
+                  </Search>
+                  <IconButton size="large" color="#AEA3D0">
+                    <NotificationsNoneIcon style={{ fill: '#AEA3D0' }} />
+                  </IconButton>
+
+                  <IconButton size="large" color="#AEA3D0">
+                    <NightlightIcon style={{ fill: '#AEA3D0' }} />
+                  </IconButton>
+
+                  <IconButton size="large" color="#AEA3D0">
+                    <InfoOutlinedIcon style={{ fill: '#AEA3D0' }} />
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit">
+                    <Image
+                      src={profile}
+                      alt={"Thumbnail-alt"}
+                      width={30}
+                      height={30}
+                      style={{ marginRight: "15px", borderRadius: "50%" }}
+                    />
+                  </IconButton>
+                </Box>
+                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={handleMobileMenuOpen}
+                    color="inherit"
+                  >
+                    <MoreIcon />
+                  </IconButton>
+                  {renderMobileMenu}
+                  {renderMenu}
+                </Box>
+              </Toolbar>
+            </AppBar>
+            <Drawer variant="permanent" open={open}>
+              <DrawerHeader>
+                <Image
+                  src={logo}
+                  alt={"Thumbnail-alt"}
+                  width={140}
+                  height={20}
+                  style={{ marginRight: "12px" }}
+                />
+                <IconButton onClick={handleDrawerClose}>
+                  {theme.direction === 'rtl' ? <ChevronRightIcon /> : <CloseIcon style={{ fill: '#2B3674' }}/>}
+                </IconButton>
+              </DrawerHeader>
+              <Divider />
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/" className={title === 'Dashboard' ? styles.active : styles.nonActive}>
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
                     }}
                   >
-                    <HomeIcon className={title === 'Dashboard' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <HomeIcon className={title === 'Dashboard' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
 
-            </ListItem>
+              </ListItem>
 
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/NFT_Marketplace" className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-
-                >
-                  <ListItemIcon
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/NFT_Marketplace" className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive}>
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <ShoppingCartOutlinedIcon className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="NFT Marketplace" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/Tables" className={title === '/Tables' ? styles.active : styles.nonActive}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <BarChartRoundedIcon className={title === '/Tables' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="Tables" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/Kanban" className={title === '/Kanban' ? styles.active : styles.nonActive}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <DashboardRoundedIcon className={title === '/Kanban' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="Kanban" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/Profile" className={title === '/Profile' ? styles.active : styles.nonActive}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <PersonRoundedIcon className={title === '/Profile' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+
+              <ListItem disablePadding sx={{ display: 'block' }}>
+                <Link href="/signin" className={title === '/signin' ? styles.active : styles.nonActive}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
                     }}
                   >
-                    <ShoppingCartOutlinedIcon className={title === '/NFT_Marketplace' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="NFT Marketplace" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            </ListItem>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                        color: '#A3AED0'
+                      }}
+                    >
+                      <HttpsRoundedIcon className={title === '/signin' ? styles.active : styles.nonActive} />
+                    </ListItemIcon>
+                    <ListItemText primary="Sign In" sx={{ opacity: open ? 1 : 0 }}>
+                    </ListItemText>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+             {!open ?<></>:
+                <DrawerFooter >
+                  <Image src={sidebarfooter} alt="sidebar-footer" style={{ width: 'auto', height: 'auto' }} />
+                </DrawerFooter>}
 
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Tables" className={title === '/Tables' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
-                    }}
-                  >
-                    <BarChartRoundedIcon className={title === '/Tables' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="Tables" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            </ListItem>
-
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Kanban" className={title === '/Kanban' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
-                    }}
-                  >
-                    <DashboardRoundedIcon className={title === '/Kanban' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="Kanban" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            </ListItem>
-
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/Profile" className={title === '/Profile' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
-                    }}
-                  >
-                    <PersonRoundedIcon className={title === '/Profile' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            </ListItem>
-
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <Link href="/signin" className={title === '/signin' ? styles.active : styles.nonActive}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                      color:'#A3AED0'
-                    }}
-                  >
-                    <HttpsRoundedIcon className={title === '/signin' ? styles.active : styles.nonActive}/>
-                  </ListItemIcon>
-                  <ListItemText primary="Sign In" sx={{ opacity: open ? 1 : 0 }}>
-                  </ListItemText>
-                </ListItemButton>
-              </Link>
-            </ListItem> 
-            <DrawerFooter >
-            <Image src={sidebarfooter} alt="sidebar-footer" style={{ width: 'auto', height: 'auto' }} />
-            </DrawerFooter>
-
-          </Drawer>
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <DrawerHeader />
-            <SessionProvider session={session}>
-            <Component {...pageProps} />
-            </SessionProvider>
-         <BottomFooter/>
+            </Drawer>
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+              <DrawerHeader />
+              <SessionProvider session={session}>
+                <Component {...pageProps} />
+              </SessionProvider>
+              <BottomFooter />
+            </Box>
           </Box>
-        </Box> 
-      </ThemeProvider>
-    </CacheProvider>
+        </ThemeProvider>
+      </CacheProvider>
     </>
   );
 };

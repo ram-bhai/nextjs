@@ -78,4 +78,10 @@ body {
     background: #eaeef7 !important;
     font-size:x-small;
 }
+.css-1f5y6oa-MuiButtonBase-root-MuiIconButton-root:hover {
+    background: none !important;
+}
+.css-kf45sl-MuiButtonBase-root-MuiIconButton-root:hover{
+    background: none !important;
+}
 

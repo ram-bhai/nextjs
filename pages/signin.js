@@ -200,7 +200,7 @@ const SignIn = () => {
                                                 type={passwordType}
                                                 onChange={handlePasswordChange}
                                                 value={passwordInput}
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder="Min. 8 characters"
                                                 value={values.password}
                                                 onChange={handleChange}
@@ -264,7 +264,7 @@ const SignIn = () => {
                 </Grid>
 
 
-                <Grid item xs={false} sm={false} md={6} lg={6} xl={6} >
+                <Grid item xs={0} sm={0} md={6} lg={6} xl={6} >
                     <Image src={bg} height={600} width={550}></Image>
                 </Grid>
             </Grid>

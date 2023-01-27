@@ -359,10 +359,7 @@ const Profile = () => {
                         <Image  src={imageUrl} alt={selectedImage.name} height={100} width={100}/>
                         </CardContent>
                       </Card>
-                      
-                     
                      </CardContent>
-                    
                     )}
 
                   </Card>
