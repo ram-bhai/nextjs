@@ -182,7 +182,7 @@ export default function ComplexTableDash() {
   const [orderBy, setOrderBy] = React.useState('calories');
  
   const [page] = React.useState(0);
-  const [rowsPerPage] = React.useState(3);
+  const [rowsPerPage] = React.useState(4);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';

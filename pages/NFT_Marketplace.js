@@ -88,15 +88,15 @@ const NFT_Marketplace = () => {
               </AppBar>
             </Box>
             <Box>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 4, sm: 2, md: 1 }} >
-          <Grid item xs={4} sm={12} md={4} lg={4} xl={4}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
+          <Grid item xs={4} sm={4} md={4} lg={4} xl={4}> 
             {conditionRender(selectedMenu)}
             </Grid>
             </Grid>
             </Box>
           
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
             <CheckedTableDash />
           <Box sx={{mt:2}}>
           <CheckedTableDash />

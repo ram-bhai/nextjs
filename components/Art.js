@@ -40,7 +40,7 @@ const Art = () => {
       <Grid container rowSpacing={0.5}>
         <Grid item>
           {arts.map((art) => (
-              <Card sx={{ borderRadius: 2 }} key={art.id}>
+              <Card key={art.id}>
                 <Image src={art.image} alt="finger" width={100} height={100} style={{marginLeft:'25%', marginTop:'4%'}} />
                 <CardContent display="flex">
                   <Typography variant="subtitle2" fontWeight='bold' color="#2B3674">

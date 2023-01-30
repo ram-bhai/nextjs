@@ -134,9 +134,9 @@ const Profile = () => {
   }, [selectedImage]);
 
   let handleToggle = () => {
-    setSelectedImage ('');
+    setSelectedImage('');
     setImageUrl('');
-  
+
   }
 
   const progress = 50;
@@ -316,7 +316,7 @@ const Profile = () => {
 
                     {!imageUrl && !selectedImage && (
                       <CardContent>
-                        
+
                         <input
                           accept="image/*"
                           type="file"
@@ -325,7 +325,7 @@ const Profile = () => {
                           onChange={e => setSelectedImage(e.target.files[0])}
                         />
                         <label htmlFor="select-image">
-                        <FileUploadRoundedIcon style={{ fill: "#4318FF" }} />
+                          <FileUploadRoundedIcon style={{ fill: "#4318FF" }} />
                           <Button variant="text" style={{ color: "#4318FF", fontWeight: 'bold' }} component="span">
                             Upload Files
                             <br />
@@ -339,27 +339,27 @@ const Profile = () => {
 
 
                     {imageUrl && selectedImage && (
-                     <CardContent>
-                      <Card>
-                        <CardHeader 
-                        action={
-                          <Tooltip title="Close">
-                            <Box sx={{background:"#eaeef7", borderRadius:'50%'}}>
-                          <IconButton>
-                        <CloseOutlinedIcon  style={{fill:"#4318FF", height:'15px', width:'15px'}} onClick={handleToggle} />
-                      </IconButton>
-                      </Box>
-                      </Tooltip>
-                        }
-                        title={<Typography variant="caption"  color="#2B3674">
-                         Preview
-                      </Typography>}
-                        />
-                        <CardContent>
-                        <Image  src={imageUrl} alt={selectedImage.name} height={100} width={100}/>
-                        </CardContent>
-                      </Card>
-                     </CardContent>
+                      <CardContent>
+                        <Card>
+                          <CardHeader
+                            action={
+                              <Tooltip title="Close">
+                                <Box sx={{ background: "#eaeef7", borderRadius: '50%' }}>
+                                  <IconButton>
+                                    <CloseOutlinedIcon style={{ fill: "#4318FF", height: '15px', width: '15px' }} onClick={handleToggle} />
+                                  </IconButton>
+                                </Box>
+                              </Tooltip>
+                            }
+                            title={<Typography variant="caption" color="#2B3674">
+                              Preview
+                            </Typography>}
+                          />
+                          <CardContent>
+                            <Image src={imageUrl} alt={selectedImage.name} height={100} width={100} />
+                          </CardContent>
+                        </Card>
+                      </CardContent>
                     )}
 
                   </Card>
@@ -597,11 +597,8 @@ const Profile = () => {
         <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
             <Card>
-              <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '100px', background: 'white', }}>
-                <Toolbar sx={{ background: 'white', borderRadius: '10px' }}>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Notifications</Typography>
-                  </Box>
+              <CardHeader
+                action={
                   <Tooltip title="More">
                     <Box sx={{
                       background: '#eaeef7',
@@ -612,9 +609,11 @@ const Profile = () => {
                       </IconButton>
                     </Box>
                   </Tooltip>
-                </Toolbar>
-              </AppBar>
-
+                }
+                title={
+                  <Typography variant='h5' fontWeight='bold' color='#2B3674' noWrap>Notifications</Typography>
+                }
+              />
               <Box sx={{ mt: 1, marginLeft: 1 }}>
                 <FormControl component="fieldset" variant="standard">
                   <FormGroup>
