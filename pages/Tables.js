@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Table from '@mui/material/Table';
@@ -17,35 +18,50 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import LinearProgress, {linearProgressClasses} from '@mui/material/LinearProgress';
 import { visuallyHidden } from '@mui/utils';
 import Checkedtable from '../components/Checkedtable';
 import Columntable from '../components/Columntable';
 import Complextable from '../components/Complextable';
 
-function createData(name, calories, fat, carbs, protein) {
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor:
+          theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 5,
+      backgroundColor: theme.palette.mode === 'light' ? '#4318FF' : '#308fe8',
+  },
+}));
+
+function createData(name, company, date, status) {
+  status= 100*(status/100);
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    company,
+    date,
+    status,
   };
 }
 
 const rows = [
-  createData('Marketplace', 305, 3.7, 67, 4.3),
-  createData('Venus DB PRO', 452, 25.0, 51, 4.9),
-  createData('Venus DS', 262, 16.0, 24, 6.0),
-  createData('Venus 3D Asset', 159, 6.0, 24, 4.0),
-  createData('Uranus', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Marketplace', 305, 3.7, 67),
+  createData('Venus DB PRO', 452, 25.0, 51),
+  createData('Venus DS', 262, 16.0, 24),
+  createData('Venus 3D Asset', 159, 6.0, 24),
+  createData('Uranus', 356, 16.0, 49),
+  createData('Honeycomb', 408, 3.2, 87),
+  createData('Ice cream sandwich', 237, 9.0, 37),
+  createData('Jelly Bean', 375, 0.0, 94),
+  createData('KitKat', 518, 26.0, 65),
+  createData('Lollipop', 392, 0.2, 98),
+  createData('Marshmallow', 318, 0, 81),
+  createData('Nougat', 360, 19.0, 9),
+  createData('Oreo', 437, 18.0, 63),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -78,23 +94,22 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'name',
-    
-    label: 'Title',
+    label: 'Name',
   },
   {
-    id: 'calories',
+    id: 'company',
     numeric: true,
-    label: 'Title',
+    label: 'Company',
   },
   {
-    id: 'fat',
+    id: 'date',
     numeric: true,
-    label: 'Title',
+    label: 'Date',
   },
   {
-    id: 'carbs',
+    id: 'status',
     numeric: true,
-    label: 'Title',
+    label: 'Status  ',
   }
 ];
 
@@ -108,14 +123,14 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-        </TableCell>
+        
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align='center'
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{borderBottom: "none", color:"#A3AED0"}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -226,21 +241,18 @@ export default function EnhancedTable() {
                           tabIndex={-1}
                           key={row.name} 
                         >
-                          <TableCell padding="checkbox">
-                          </TableCell>
+                          
                           <TableCell
-                            component="th"
-                            id={labelId}
-                            scope="row"
-                            padding="none"
-                            style ={{color: "#2B3674", fontWeight:"Bold"}} 
+                           
+                            style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}} 
                           >
                             {row.name}
                           </TableCell>
-                          <TableCell align="right" style = {{color: "#E0E5F2", }}>{row.calories}</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
-                          {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
+                          <TableCell align="center" style = {{color: "#E0E5F2",borderBottom: "none" }}>{row.company}</TableCell>
+                          <TableCell align="center" style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.date}</TableCell>
+                          <TableCell align="center" style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.status}%
+                          <BorderLinearProgress variant="determinate" value={row.status}/>
+                          </TableCell>
                         </TableRow>
                       );
                     })}

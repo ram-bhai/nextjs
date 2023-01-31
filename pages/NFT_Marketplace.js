@@ -12,6 +12,11 @@ import Art from '../components/Art';
 import Music from '../components/Music';
 import Collectibles from '../components/Collectibles';
 import Sports from '../components/Sports';
+import Creators from '../components/Creators';
+import History from '../components/History';
+
+
+
 
 
 
@@ -52,7 +57,7 @@ const NFT_Marketplace = () => {
             }}>
               <Image src={market} style={{ maxHeight: '30vh' }}></Image>
             </Box>
-            <Box sx={{ flexGrow: 1, mt: 2 }}>
+            <Box sx={{ flexGrow: 1, mt: 3 }}>
               <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
                 <Toolbar sx={{ background: '#eaeef7' }}>
                   <Typography
@@ -87,9 +92,9 @@ const NFT_Marketplace = () => {
                 </Toolbar>
               </AppBar>
             </Box>
-            <Box>
+            <Box sx={{m:1,p:0}}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
-          <Grid item xs={4} sm={4} md={4} lg={4} xl={4}> 
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}> 
             {conditionRender(selectedMenu)}
             </Grid>
             </Grid>
@@ -97,9 +102,9 @@ const NFT_Marketplace = () => {
           
           </Grid>
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-            <CheckedTableDash />
+            <Creators />
           <Box sx={{mt:2}}>
-          <CheckedTableDash />
+          <History />
           </Box>
           </Grid>
         </Grid>

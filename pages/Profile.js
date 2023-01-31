@@ -622,9 +622,7 @@ const Profile = () => {
                         return (
                           < FormControlLabel sx={{ color: '#2B3674' }}
                             control={
-
                               <IOSSwitch sx={{ m: 1 }} checked={state[index]?.[key]} onChange={handleChange} name={key} />
-
                             }
                             label={key}
                           />
