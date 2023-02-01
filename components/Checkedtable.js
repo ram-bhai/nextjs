@@ -19,31 +19,31 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { visuallyHidden } from '@mui/utils';
+import Card from '@mui/material/Card';
 
-function checkData(name, calories, fat, carbs, protein) {
+function checkData(name, average, progress, date) {
     return {
         name,
-        calories,
-        fat,
-        carbs,
-        protein,
+        average,
+        progress,
+        date
     };
 }
 
 const rowsdata = [
-    checkData('Cupcake', 30.5, 3.7, 67, 4.3),
-    checkData('Donut', 45.2, 25.0, 51, 4.9),
-    checkData('Eclair', 26.2, 16.0, 24, 6.0),
-    checkData('Frozen yoghurt', 15.9, 6.0, 24, 4.0),
-    checkData('Gingerbread', 35.6, 16.0, 49, 3.9),
-    checkData('Honeycomb', 40.8, 3.2, 87, 6.5),
-    checkData('Ice cream sandwich', 23.7, 9.0, 37, 4.3),
-    checkData('Jelly Bean', 37.5, 0.0, 94, 0.0),
-    checkData('KitKat', 51.8, 26.0, 65, 7.0),
-    checkData('Lollipop', 39.2, 0.2, 98, 0.0),
-    checkData('Marshmallow', 31.8, 0, 81, 2.0),
-    checkData('Nougat', 36.0, 19.0, 9, 37.0),
-    checkData('Oreo', 43.7, 18.0, 63, 4.0),
+    checkData('Marketplace', 67, 305, '12.Jan.2021'),
+    checkData('Venus DB PRO', 51, 452, '01.Jan.2021'),
+    checkData('Venus DS', 24, 262, '12.Feb.2021'),
+    checkData('Venus 3D Asset', 24, 159, '15.Jan.2021'),
+    checkData('Uranus', 49, 356, '10.Mar.2021'),
+    checkData('Honeycomb', 87, 408, '20.Jan.2021',),
+    checkData('Ice cream sandwich', 37, 237, '30.Apr.2021'),
+    checkData('Jelly Bean', 94, 375, '28.Jun.2021'),
+    checkData('KitKat', 65, 518, '17.Aug.2021'),
+    checkData('Lollipop', 98, 392, '10.Jan.2021'),
+    checkData('Marshmallow', 81, 318, '05.May.2021'),
+    checkData('Nougat', 9, 360, '19.Sep.2021'),
+    checkData('Oreo', 63, 437, '18.Oct.2021'),
 ];
 
 function descendingComparators(a, b, orderBy) {
@@ -78,22 +78,22 @@ const headCellsdata = [
     {
         id: 'name',
         numeric: false,
-        label: 'Title',
+        label: 'Name',
     },
     {
-        id: 'calories',
+        id: 'average',
         numeric: true,
-        label: 'Title',
+        label: 'Average',
     },
     {
-        id: 'fat',
+        id: 'progress',
         numeric: true,
-        label: 'Title',
+        label: 'Progress',
     },
     {
-        id: 'carbs',
+        id: 'date',
         numeric: true,
-        label: 'Title',
+        label: 'Date',
     }
 ];
 
@@ -107,14 +107,15 @@ function EnhancedTableHeads(props) {
     return (
         <TableHead>
             <TableRow>
-                <TableCell padding="checkbox">
+                <TableCell padding="checkbox" style={{ borderBottom: "none" }}>
                 </TableCell>
                 {headCellsdata.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
-                        padding={headCell.disablePadding ? 'none' : 'normal'}
+                        align='center'
+                        padding='2'
                         sortDirection={orderBy === headCell.id ? order : false}
+                        style={{ borderBottom: "none", color: "#A3AED0", p: 0 }}
                     >
                         <TableSortLabel
                             active={orderBy === headCell.id}
@@ -160,19 +161,13 @@ function EnhancedTableToolbars(props) {
         >
             {numSelected > 0 ? (
                 <Typography
-                    sx={{ flex: '1 1 100%' }}
-                    color="inherit"
-                    variant="subtitle1"
-                    component="div"
-                >
+                    sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1">
                     {numSelected} selected
                 </Typography>
             ) : (
                 <Typography
                     sx={{ flex: '1 1 100%' }}
                     variant="h6"
-                    id="tableTitle"
-                    component="div"
                     color="#2B3674"
                     fontWeight="Bold"
                 >
@@ -200,7 +195,7 @@ function EnhancedTableToolbars(props) {
                         justifyContent: 'center'
                     }}>
                         <IconButton>
-                            <MoreHorizRoundedIcon style={{ fill: '#2B3674' }} />
+                            <MoreHorizRoundedIcon style={{ fill: '#4318FF' }} />
                         </IconButton>
                     </Box>
                 </Tooltip>
@@ -252,70 +247,63 @@ const Checkedtable = () => {
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     return (
-        <Box sx={{ width: '100%' }}>
-            <Paper sx={{ width: '100%' }}>
-                <EnhancedTableToolbars numSelected={selected.length} />
-                <TableContainer>
-                    <Table
-                        sx={{ minWidth: 550 }}
-                        aria-labelledby="tableTitle"
-                    >
-                        <EnhancedTableHeads
-                            numSelected={selected.length}
-                            order={order}
-                            orderBy={orderBy}
-                            onRequestSort={handleRequestSort}
-                            rowCount={rowsdata.length}
-                        />
-                        <TableBody>
-                            {stableSorts(rowsdata, getComparators(order, orderBy))
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row, index) => {
-                                    const isItemSelected = isSelected(row.name);
-                                    const labelId = `enhanced-table-checkbox-${index}`;
 
-                                    return (
-                                        <TableRow
-                                            hover
-                                            onClick={(event) => handleClick(event, row.name)}
-                                            role="checkbox"
-                                            aria-checked={isItemSelected}
-                                            tabIndex={-1}
-                                            key={row.name}
-                                            selected={isItemSelected}
+        <Card elevation={3} style={{ borderRadius: '2%' }}>
+            <EnhancedTableToolbars numSelected={selected.length} />
+            <TableContainer>
+                <Table>
+                    <EnhancedTableHeads
+                        numSelected={selected.length}
+                        order={order}
+                        orderBy={orderBy}
+                        onRequestSort={handleRequestSort}
+                       
+                    />
+                    <TableBody>
+                        {stableSorts(rowsdata, getComparators(order, orderBy))
+                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            .map((row, index) => {
+                                const isItemSelected = isSelected(row.name);
+                                const labelId = `enhanced-table-checkbox-${index}`;
+
+                                return (
+                                    <TableRow
+                                        hover
+                                        onClick={(event) => handleClick(event, row.name)}
+                                        role="checkbox"
+                                        height={61}
+                                        aria-checked={isItemSelected}
+                                        tabIndex={-1}
+                                        key={row.name}
+                                        selected={isItemSelected}
+                                    >
+                                        <TableCell align="right" padding="checkbox" style={{ borderBottom: "none" }}>
+                                            <Checkbox
+                                                color="primary"
+                                                checked={isItemSelected}
+                                                inputProps={{
+                                                    'aria-labelledby': labelId,
+                                                }}
+                                            />
+                                        </TableCell>
+                                        <TableCell
+                                            id={labelId}
+                                            scope="row"
+                                            align="left"
+                                            style={{ color: "#2B3674",borderBottom: "none", fontSize:'12.2px', fontWeight: "Bold", }}
                                         >
-                                            <TableCell padding="checkbox">
-                                                <Checkbox
-                                                    color="primary"
-                                                    checked={isItemSelected}
-                                                    inputProps={{
-                                                        'aria-labelledby': labelId,
-                                                    }}
-                                                />
-                                            </TableCell>
-                                            <TableCell
-                                                component="th"
-                                                id={labelId}
-                                                scope="row"
-                                                padding="none"
-                                                style ={{color: "#2B3674", fontWeight:"Bold"}}
-                                            >
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.calories}%</TableCell>
-                                            <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
-                                            <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
-                                            {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
-                                        </TableRow>
-                                    );
-                                })}
-
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Paper>
-
-        </Box>
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.average}%</TableCell>
+                                        <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.progress}</TableCell>
+                                        <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.date}</TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Card>
     );
 }
 

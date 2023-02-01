@@ -13,7 +13,6 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -23,6 +22,10 @@ import { visuallyHidden } from '@mui/utils';
 import Checkedtable from '../components/Checkedtable';
 import Columntable from '../components/Columntable';
 import Complextable from '../components/Complextable';
+import  Card  from '@mui/material/Card';
+import WindowSharpIcon from '@mui/icons-material/WindowSharp';
+import AppleIcon from '@mui/icons-material/Apple';
+import AdbIcon from '@mui/icons-material/Adb';
 
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -39,7 +42,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 function createData(name, company, date, status) {
-  status= 100*(status/100);
+  
   return {
     name,
     company,
@@ -49,19 +52,19 @@ function createData(name, company, date, status) {
 }
 
 const rows = [
-  createData('Marketplace', 305, 3.7, 67),
-  createData('Venus DB PRO', 452, 25.0, 51),
-  createData('Venus DS', 262, 16.0, 24),
-  createData('Venus 3D Asset', 159, 6.0, 24),
-  createData('Uranus', 356, 16.0, 49),
-  createData('Honeycomb', 408, 3.2, 87),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Jelly Bean', 375, 0.0, 94),
-  createData('KitKat', 518, 26.0, 65),
-  createData('Lollipop', 392, 0.2, 98),
-  createData('Marshmallow', 318, 0, 81),
-  createData('Nougat', 360, 19.0, 9),
-  createData('Oreo', 437, 18.0, 63),
+  createData('Marketplace', 305, '12.Jan.2021', 67),
+  createData('Venus DB PRO', 452, '01.Jan.2021', 51),
+  createData('Venus DS', 262, '12.Feb.2021', 24),
+  createData('Venus 3D Asset', 159,'15.Jan.2021', 24),
+  createData('Uranus', 356, '10.Mar.2021', 49),
+  createData('Honeycomb', 408, '20.Jan.2021', 87),
+  createData('Ice cream sandwich', 237, '30.Apr.2021', 37),
+  createData('Jelly Bean', 375, '28.Jun.2021', 94),
+  createData('KitKat', 518, '17.Aug.2021', 65),
+  createData('Lollipop', 392, '10.Jan.2021', 98),
+  createData('Marshmallow', 318, '05.May.2021', 81),
+  createData('Nougat', 360,'19.Sep.2021', 9),
+  createData('Oreo', 437, '18.Oct.2021', 63),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -114,7 +117,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+  const { order, orderBy, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -123,12 +126,11 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             align='center'
-            padding={headCell.disablePadding ? 'none' : 'normal'}
+            padding='0.5'
             sortDirection={orderBy === headCell.id ? order : false}
             style={{borderBottom: "none", color:"#A3AED0"}}
           >
@@ -156,7 +158,7 @@ EnhancedTableHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
+
 };
 
 function EnhancedTableToolbar(props) {
@@ -171,8 +173,6 @@ function EnhancedTableToolbar(props) {
         <Typography
           sx={{ flex: '1 1 100%' }}
           variant="h6"
-          id="tableTitle"
-          component="div"
           color="#2B3674"
           fontWeight="Bold"
         >
@@ -187,7 +187,7 @@ function EnhancedTableToolbar(props) {
           justifyContent: 'center'
         }}>
           <IconButton>
-            <MoreHorizRoundedIcon style={{ fill: '#2B3674' }} />
+            <MoreHorizRoundedIcon style={{ fill: '#4318FF' }} />
           </IconButton>
         </Box>
       </Tooltip>
@@ -210,56 +210,46 @@ export default function EnhancedTable() {
   };
 
  
-
   return (
     <Box sx={{padding: (theme) => theme.spacing(1)}}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
         <Grid items lg={6} xs={12} sm={12} md={6} xl={6}>
-          <Paper sx={{ width: '100%', mb: 2 }}>
+          <Card elevation={3} style={{borderRadius:'2%'}}>
             <EnhancedTableToolbar />
             <TableContainer>
-              <Table
-                sx={{ minWidth: 550 }}
-                aria-labelledby="tableTitle"
-              >
+              <Table>
                 <EnhancedTableHead
                   order={order}
                   orderBy={orderBy}
                   onRequestSort={handleRequestSort}
-                  rowCount={rows.length}
+                 
                 />
                 <TableBody>
                   {stableSort(rows, getComparator(order, orderBy))
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row, index) => {
-                      const labelId = `enhanced-table-checkbox-${index}`;
+                    .map((row) => {
+                      
 
                       return (
-                        <TableRow
-                          hover
-                          role="checkbox"
-                          tabIndex={-1}
-                          key={row.name} 
-                        >
-                          
-                          <TableCell
-                           
-                            style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}} 
-                          >
-                            {row.name}
-                          </TableCell>
-                          <TableCell align="center" style = {{color: "#E0E5F2",borderBottom: "none" }}>{row.company}</TableCell>
+                        <TableRow hover key={row.name}>
+                          <TableCell  style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.name}</TableCell>
+                           {`${row.company}`<= 250 ? <TableCell align="center" style = {{color: "#E0E5F2",borderBottom: "none" }}>
+                            <AppleIcon style={{maxHeight:'20px'}}/><WindowSharpIcon style={{maxHeight:'20px'}}/>
+                           </TableCell>:<TableCell align="center" style = {{color: "#E0E5F2",borderBottom: "none" }}>
+                           <AppleIcon style={{maxHeight:'20px'}}/><AdbIcon style={{maxHeight:'20px'}}/><WindowSharpIcon style={{maxHeight:'20px'}}/>
+                            </TableCell>}
                           <TableCell align="center" style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.date}</TableCell>
-                          <TableCell align="center" style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.status}%
-                          <BorderLinearProgress variant="determinate" value={row.status}/>
+                          <TableCell align="left" style ={{color: "#2B3674", fontWeight:"Bold", borderBottom: "none"}}>{row.status}%
+                          <BorderLinearProgress  variant="determinate" value={row.status}/>
                           </TableCell>
+
                         </TableRow>
                       );
-                    })}
+                      })}
                 </TableBody>
               </Table>
             </TableContainer>
-          </Paper>
+          </Card>
         </Grid>
 
         <Grid items lg={6} xs={12} sm={12} md={6} xl={6}>
@@ -267,7 +257,7 @@ export default function EnhancedTable() {
         </Grid> 
         
         </Grid>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} sx={{mt:2}}>
         <Grid items lg={6} xs={12} sm={12} md={6} xl={6}>
           <Columntable/>
         </Grid>

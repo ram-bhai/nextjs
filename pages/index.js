@@ -481,13 +481,13 @@ export default function Home() {
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
 
             <Box sx={{
-              height: '55vh',
+              height: '100%',
               background: '#fff',
               borderRadius: '10px',
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <DateRangePickerComp style={{ width: '100%' }} />
+              <DateRangePickerComp />
             </Box>
           </Grid>
         </Grid>

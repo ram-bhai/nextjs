@@ -68,23 +68,19 @@ const Creators = () => {
                         </Typography>
                     } />
                 <CardContent>
-                    <TableContainer elevation={0} style={{borderRadius:'20px'}}>
-                        <Table >
+                    <TableContainer  style={{borderRadius:'20px'}}>
+                        <Table>
                             <TableHead>
                                 <TableRow>
-                                   <TableCell style={{ width: "5%", borderBottom: "none"}}></TableCell>
-                                    <TableCell style={{width: "5%", color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Name</TableCell>
-                                    <TableCell  style={{width: "5%", color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Artworks</TableCell>
-                                    <TableCell  style={{width: "5%", color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Rating</TableCell>
+                                   <TableCell style={{borderBottom: "none"}}></TableCell>
+                                    <TableCell style={{color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Name</TableCell>
+                                    <TableCell  style={{color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Artworks</TableCell>
+                                    <TableCell  style={{color:'#AEA3D0', fontWeight:'bold', borderBottom: "none"}}>Rating</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {rows.map((row) => (
-                                    <TableRow
-                                        key={row.name}
-                                        style={{maxHeight: '1'}}
-                                    >
-
+                                    <TableRow key={row.name}>
                                         <TableCell align="right" sx={{p:0,m:0,borderBottom: "none"}}>
                                             <Avatar
                                             src={row.avatar} alt="Avatar" sx={{width:30, height:30}} style={{ borderRadius: '20%' }}/>
@@ -92,10 +88,7 @@ const Creators = () => {
                                         <TableCell align="left" style={{borderBottom: "none",color:'#2B3674', fontWeight:'bold'}}>{row.name}</TableCell>
                                         <TableCell align="center" style={{ borderBottom: "none",color:'#AEA3D0', fontWeight:'bold'}}>{row.calories}</TableCell>
                                         <TableCell align="center"style={{borderBottom: "none"}}>
-                                            <BorderLinearProgress
-                                                variant="determinate"
-                                                value={row.progress}
-                                            />
+                                            <BorderLinearProgress variant="determinate" value={row.progress}/>
                                         </TableCell>
                                     </TableRow>
                                 ))}

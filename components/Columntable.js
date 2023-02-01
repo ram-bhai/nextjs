@@ -12,37 +12,37 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(name, calories, fat, carbs, protein) {
+
+function createData(name, average, progress, date) {
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    average,
+    progress,
+    date
   };
 }
 
 const rows = [
-  createData('Marketplace', 30.5, 3.7, 67, 4.3),
-  createData('Venus DB PRO', 45.2, 25.0, 51, 4.9),
-  createData('Venus DS', 26.2, 16.0, 24, 6.0),
-  createData('Venus 3D Asset', 15.9, 6.0, 24, 4.0),
-  createData('Uranus', 35.6, 16.0, 49, 3.9),
-  createData('Honeycomb', 40.8, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 23.7, 9.0, 37, 4.3),
-  createData('Jelly Bean', 37.5, 0.0, 94, 0.0),
-  createData('KitKat', 51.8, 26.0, 65, 7.0),
-  createData('Lollipop', 39.2, 0.2, 98, 0.0),
-  createData('Marshmallow', 31.8, 0, 81, 2.0),
-  createData('Nougat', 36.0, 19.0, 9, 37.0),
-  createData('Oreo', 43.7, 18.0, 63, 4.0),
+  createData('Marketplace', 30.5, 3.7, '01.Jan.2021'),
+  createData('Venus DB PRO', 45.2, 25.0, '02.Feb.@021'),
+  createData('Venus DS', 26.2, 16.0, '03.Mar.2021'),
+  createData('Venus 3D Asset', 15.9, 6.0, '04.Jan.2021'),
+  createData('Uranus', 35.6, 16.0, '10.Apr.2021'),
+  createData('Honeycomb', 40.8, 3.2, '13.Sep.2021'),
+  createData('Ice cream sandwich', 23.7, 9.0,'13.Sep.2021'),
+  createData('Jelly Bean', 37.5, 0.0, '13.Sep.2021'),
+  createData('KitKat', 51.8, 26.0, '13.Sep.2021'),
+  createData('Lollipop', 39.2, 0.2, '13.Sep.2021'),
+  createData('Marshmallow', 31.8, 0, '13.Sep.2021'),
+  createData('Nougat', 36.0, 19.0,'13.Sep.2021'),
+  createData('Oreo', 43.7, 18.0, '13.Sep.2021'),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -75,23 +75,22 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'name',
-    
-    label: 'Title',
+    label: 'Name',
   },
   {
-    id: 'calories',
+    id: 'average',
     numeric: true,
-    label: 'Title',
+    label: 'Average',
   },
   {
-    id: 'fat',
+    id: 'progress',
     numeric: true,
-    label: 'Title',
+    label: 'Progress',
   },
   {
-    id: 'carbs',
+    id: 'date',
     numeric: true,
-    label: 'Title',
+    label: 'Date',
   }
 ];
 
@@ -105,14 +104,14 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-        </TableCell>
+      <TableCell  style={{borderBottom: "none" }} ></TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align='center'
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{ borderBottom: "none", color: "#A3AED0"}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -169,7 +168,7 @@ function EnhancedTableToolbar(props) {
           justifyContent: 'center'
         }}>
           <IconButton>
-            <MoreHorizRoundedIcon style={{ fill: '#2B3674' }} />
+            <MoreHorizRoundedIcon style={{ fill: '#4318FF' }} />
           </IconButton>
         </Box>
       </Tooltip>
@@ -195,13 +194,10 @@ export default function Columntable() {
 
   return (
     <Box sx={{ width: '100%' }}>
-          <Paper sx={{ width: '100%', mb: 2 }}>
+          <Card elevation={3} style={{borderRadius:'15px'}}>
             <EnhancedTableToolbar />
             <TableContainer>
-              <Table
-                sx={{ minWidth: 550 }}
-                aria-labelledby="tableTitle"
-              >
+              <Table>
                 <EnhancedTableHead
                   order={order}
                   orderBy={orderBy}
@@ -221,28 +217,27 @@ export default function Columntable() {
                           tabIndex={-1}
                           key={row.name} 
                         >
-                          <TableCell padding="checkbox">
-                          </TableCell>
+                          <TableCell  style={{borderBottom: "none" }} ></TableCell>
                           <TableCell
                             component="th"
                             id={labelId}
                             scope="row"
+                            align='left'
                             padding="none"
-                            style ={{color: "#2B3674", fontWeight:"Bold"}} 
+                            style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }} 
                           >
                             {row.name}
                           </TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.calories}%</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
-                          {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
+                          <TableCell align="center"  style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.average}%</TableCell>
+                          <TableCell align="center"  style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.progress}</TableCell>
+                          <TableCell align="center"  style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.date}</TableCell>
                         </TableRow>
                       );
                     })}
                 </TableBody>
               </Table>
             </TableContainer>
-          </Paper>
+          </Card>
     </Box>
   );
 }

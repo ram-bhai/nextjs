@@ -12,10 +12,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
-import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
 import Checkbox from '@mui/material/Checkbox';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { visuallyHidden } from '@mui/utils';
+import IconButton from '@mui/material/IconButton';
+import DragIndicatorSharpIcon from '@mui/icons-material/DragIndicatorSharp';
 
 function createData(name, calories) {
   return {
@@ -94,7 +96,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell padding="checkbox" style={{borderBottom: "none"}}>
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -111,13 +113,23 @@ function EnhancedTableHead(props) {
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{borderBottom: "none"}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
+              style={{color:"#2B3674", fontSize:'20px', fontWeight:'bold'}}
             >
-              {headCell.label=== 'Task' ? headCell.label : <MoreHorizIcon style={{fill :'#4318FF',background:'#F4F7FE', borderRadius:'25%'}}/>}
+              {headCell.label=== 'Task' ? headCell.label : <Box sx={{
+          background: '#eaeef7',
+          borderRadius: '10px',
+          justifyContent: 'center'
+        }}>
+          <IconButton>
+            <MoreHorizIcon style={{ fill: '#4318FF',maxHeight:'25px' }} />
+          </IconButton>
+        </Box>}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -140,27 +152,6 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-function EnhancedTableToolbar(props) {
-  const { numSelected } = props;
-
-  return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-        }),
-      }}
-    >
-    </Toolbar>
-  );
-}
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
 
  const TaskTable=()=> {
   const [order, setOrder] = React.useState('asc');
@@ -168,7 +159,7 @@ EnhancedTableToolbar.propTypes = {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(4);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -212,20 +203,16 @@ EnhancedTableToolbar.propTypes = {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 1 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+   
+      <Card  elevation={3} style={{borderRadius:'10px'}}>
+       
         <TableContainer>
-          <Table
-            sx={{ minWidth: 100 }}
-            aria-labelledby="tableTitle"
-          >
+          <Table>
             <EnhancedTableHead
               numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
+             
               onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
+             
               rowCount={rows.length}
             />
             <TableBody>
@@ -245,7 +232,7 @@ EnhancedTableToolbar.propTypes = {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
+                      <TableCell padding="checkbox" style={{borderBottom: "none"}}>
                         <Checkbox
                           color="primary"
                           checked={isItemSelected}
@@ -254,23 +241,22 @@ EnhancedTableToolbar.propTypes = {
                           }}
                         />
                       </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
+                      {isItemSelected ? <TableCell id={labelId} padding="none" style={{fontWeight:"bold",color:"#2B3674", borderBottom: "none"}}>
                         {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
+                      </TableCell>:<TableCell id={labelId} padding="none" style={{fontWeight:"bold",color:"#A3AED0", borderBottom: "none"}}>
+                        {row.name}
+                      </TableCell>}
+                      <TableCell align="right" style={{borderBottom: "none"}}>
+                        <DragIndicatorSharpIcon style={{fill:"#B0BBD5"}}/>
+                        </TableCell>
                     </TableRow>
                   );
                 })}
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
-    </Box>
+      </Card>
+   
   );
 }
 export default TaskTable;

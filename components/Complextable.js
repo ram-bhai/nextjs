@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Table from '@mui/material/Table';
@@ -12,37 +12,66 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { visuallyHidden } from '@mui/utils';
+import LinearProgress, {linearProgressClasses} from '@mui/material/LinearProgress';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import CancelSharpIcon from '@mui/icons-material/CancelSharp';
+import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 
-function createData(name, calories, fat, carbs, protein) {
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor:
+          theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 5,
+      backgroundColor: theme.palette.mode === 'light' ? '#4318FF' : '#308fe8',
+  },
+}));
+
+function createData(name, status, date, progress) {
+  const condition = status =>{
+  if(status === "Approved"){
+    return <CheckCircleRoundedIcon style={{fill:'#05CD99',maxHeight: '15px'}}/>
+  }
+  if(status === "Disable"){
+    return <CancelSharpIcon style={{fill:'#EE5D50', maxHeight:'15px'}}/>
+  }
+  if(status === "Error"){
+    return <InfoSharpIcon style={{fill:'#FFCE20', maxHeight:'15px'}}/>
+  }
+}
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    status,
+    date,
+    progress,
+    condition
   };
 }
 
 const rows = [
-  createData('Marketplace', 305, 3.7, 67, 4.3),
-  createData('Venus DB PRO', 452, 25.0, 51, 4.9),
-  createData('Venus DS', 262, 16.0, 24, 6.0),
-  createData('Venus 3D Asset', 159, 6.0, 24, 4.0),
-  createData('Uranus', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Marketplace', 'Approved', '24.Jan.2021', 67),
+  createData('Venus DB PRO', 'Disable', '14.Jun.2021', 51),
+  createData('Venus DS', 'Error','04.Apr.2021', 24),
+  createData('Venus 3D Asset','Approved', '24.Sep.2021', 24),
+  createData('Uranus', 'Disable','28.Oct.2021', 49),
+  createData('Honeycomb', 'Error', '12.Jan.2021', 87),
+  createData('Ice cream sandwich', 'Approved','27.Jul.2021', 37),
+  createData('Jelly Bean', 'Disable','29.Feb.2021', 94),
+  createData('KitKat', 'Error', '07.Mar.2021', 65),
+  createData('Lollipop','Approved', '10.Jan.2021', 98),
+  createData('Marshmallow', 'Disable', '31.Aug.2021', 81),
+  createData('Nougat','Error', '02.May.2021', 9),
+  createData('Oreo', 'Approved', '19.Nov.2021', 63),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -75,23 +104,22 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'name',
-    
-    label: 'Title',
+    label: 'Name',
   },
   {
-    id: 'calories',
-    numeric: true,
-    label: 'Title',
+    id: 'status',
+    numeric: false,
+    label: 'Status',
   },
   {
-    id: 'fat',
+    id: 'date',
     numeric: true,
-    label: 'Title',
+    label: 'Date',
   },
   {
-    id: 'carbs',
-    numeric: true,
-    label: 'Title',
+    id: 'progress',
+    numeric: false,
+    label: 'Progress',
   }
 ];
 
@@ -105,14 +133,14 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell  style={{ borderBottom: "none"}}>
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
+            align='center'
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{ borderBottom: "none", color: "#A3AED0"}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -153,8 +181,6 @@ function EnhancedTableToolbar(props) {
         <Typography
           sx={{ flex: '1 1 100%' }}
           variant="h6"
-          id="tableTitle"
-          component="div"
           color="#2B3674"
           fontWeight="Bold"
         >
@@ -169,7 +195,7 @@ function EnhancedTableToolbar(props) {
           justifyContent: 'center'
         }}>
           <IconButton>
-            <MoreHorizRoundedIcon style={{ fill: '#2B3674' }} />
+            <MoreHorizRoundedIcon style={{ fill: '#4318FF' }} />
           </IconButton>
         </Box>
       </Tooltip>
@@ -195,13 +221,10 @@ export default function Complextable() {
 
   return (
     <Box sx={{ width: '100%', }}>
-          <Paper sx={{ width: '100%'}}>
+          <Card elevation={3} style={{ borderRadius: '15px'}}>
             <EnhancedTableToolbar />
             <TableContainer>
-              <Table
-                sx={{ minWidth: '550' }}
-                aria-labelledby="tableTitle"
-              >
+              <Table>
                 <EnhancedTableHead
                   order={order}
                   orderBy={orderBy}
@@ -221,28 +244,31 @@ export default function Complextable() {
                           tabIndex={-1}
                           key={row.name} 
                         >
-                          <TableCell padding="checkbox">
-                          </TableCell>
+                        <TableCell  style={{borderBottom: "none" }} ></TableCell>
                           <TableCell
                             component="th"
                             id={labelId}
                             scope="row"
+                            align='left'
                             padding="none"
-                            style ={{color: "#2B3674", fontWeight:"Bold"}} 
+                            style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }} 
                           >
                             {row.name}
                           </TableCell>
-                          <TableCell align="right" style = {{color: "#2B3674", fontWeight:"Bold"}}>{row.calories}</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.fat}</TableCell>
-                          <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.carbs}</TableCell>
-                          {/* <TableCell align="right" style ={{color: "#2B3674", fontWeight:"Bold"}}>{row.protein}</TableCell> */}
+                         <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.condition}{row.status}</TableCell>
+                          <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.date}</TableCell>
+                          <TableCell align="center" style={{ borderBottom: "none" }}><BorderLinearProgress  variant="determinate" value={row.progress}/></TableCell>
                         </TableRow>
                       );
                     })}
                 </TableBody>
               </Table>
             </TableContainer>
-          </Paper>
+          </Card>
     </Box>
   );
 }
+
+// Approved  <CheckCircleRoundedIcon style={{fill:'#05CD99',maxHeight: '15px'}}/>
+// Disable   <CancelSharpIcon style={{fill:'#EE5D50', maxHeight:'15px'}}/>
+//Error    <InfoSharpIcon style={{fill:'#FFCE20', maxHeight:'15px'}}/>
