@@ -46,18 +46,16 @@ const NFT_Marketplace = () => {
 
   return (
     <>
-      <Box sx={{ padding: (theme) => theme.spacing(2), }}>
+      <Box sx={{padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
           <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
             <Box sx={{
-              background: '#fff',
-              borderRadius: '10px',
-              display: 'flex',
-              alignItems: 'center'
+              borderRadius: '12px',
+              alignItems: 'center',
             }}>
-              <Image src={market} style={{ maxHeight: '30vh' }}></Image>
+              <Image alt="marketBG" sx={{m:0}} src={market} priority={true}  style={{ maxHeight: '35vh',maxWidth:'99%'}}></Image>
             </Box>
-            <Box sx={{ flexGrow: 1, mt: 3 }}>
+            <Box sx={{ flexGrow: 1, m: 1 }}>
               <AppBar sx={{ position: 'relative', boxShadow: 'none' }}>
                 <Toolbar sx={{ background: '#eaeef7' }}>
                   <Typography
@@ -68,40 +66,55 @@ const NFT_Marketplace = () => {
                   >
                     Trending NFTs
                   </Typography>
-                  <Box sx={{ flexGrow: 1 }} />
-                  <Box sx={{ display: 'flex' }}>
-                    <IconButton size='small' onClick={evnt => handleClick(evnt)}  value='art' style={{ color: "#2b3674", }}>
+                  <Box sx={{ flexGrow: 1,display: 'flex' }} />
+                  
+                    {selectedMenu==='art' ?<IconButton size='small' onClick={evnt => handleClick(evnt)}  value='art' style={{ color: "#6AD2FF", textDecoration:'underline' }}>
                       Art
-                    </IconButton>
-                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='music'
+                    </IconButton>:<IconButton size='small' onClick={evnt => handleClick(evnt)}  value='art' style={{ color: "#2b3674", }}>
+                      Art
+                    </IconButton>}
+
+                    {selectedMenu==='music' ?<IconButton size='small' onClick={evnt => handleClick(evnt)} value='music'
+                      style={{ color: "#6AD2FF", textDecoration:'underline', marginLeft: '2%' }}
+                    >
+                      Music
+                    </IconButton>:<IconButton size='small' onClick={evnt => handleClick(evnt)} value='music'
                       style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Music
-                    </IconButton>
-                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='collectibles'
-                      style={{ color: "#2b3674", marginLeft: '2%' }}
+                    </IconButton>}
+
+                    {selectedMenu==='collectibles' ?<IconButton size='small' onClick={evnt => handleClick(evnt)} value='collectibles'
+                      style={{color: "#6AD2FF", textDecoration:'underline', marginLeft: '2%'}}
                     >
                       Collectibles
-                    </IconButton>
-                    <IconButton size='small' onClick={evnt => handleClick(evnt)} value='sports'
+                    </IconButton>:<IconButton size='small' onClick={evnt => handleClick(evnt)} value='collectibles'
+                     style={{ color: "#2b3674", marginLeft: '2%'}}
+                    >
+                      Collectibles
+                    </IconButton>}
+
+                    {selectedMenu==='sports' ?<IconButton size='small' onClick={evnt => handleClick(evnt)} value='sports'
+                      style={{color: "#6AD2FF", textDecoration:'underline', marginLeft: '2%'}}
+                    >
+                      Sports
+                    </IconButton>:<IconButton size='small' onClick={evnt => handleClick(evnt)} value='sports'
                       style={{ color: "#2b3674", marginLeft: '2%' }}
                     >
                       Sports
-                    </IconButton>
-                  </Box>
+                    </IconButton>}
+                  
                 </Toolbar>
               </AppBar>
             </Box>
             <Box sx={{m:1,p:0}}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}> 
             {conditionRender(selectedMenu)}
-            </Grid>
-            </Grid>
             </Box>
-          
           </Grid>
-          <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+
+
+
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
             <Creators />
           <Box sx={{mt:2}}>
           <History />

@@ -6,7 +6,6 @@ import { CacheProvider } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import lightTheme from '../public/theme/Lighttheme';
 import '../styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled, useTheme, alpha } from '@mui/material/styles';
@@ -133,10 +132,9 @@ const Search = styled('div')(({ theme }) => ({
   borderRadius: '20px',
   background: '#eaeef7',
   height: '40px',
-  marginTop: '7px',
-  width: '100%',
+  margin: 1,
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(2),
     width: 'auto',
   },
 }));
@@ -359,8 +357,8 @@ const MyApp = (props, session) => {
                   display: { xs: 'none', md: 'flex' },
                   background: '#fff',
                   borderRadius: '25px',
-                  marginTop: '7px',
-                  justifyContent: 'center',
+                  marginTop: '5px',
+                  alignItems: 'center',
 
                 }}>
                   <Search>
@@ -593,9 +591,7 @@ const MyApp = (props, session) => {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               <DrawerHeader />
-              <SessionProvider session={session}>
                 <Component {...pageProps} />
-              </SessionProvider>
               <BottomFooter />
             </Box>
           </Box>

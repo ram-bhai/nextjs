@@ -85,7 +85,7 @@ const Music = () => {
         {arts.slice(11, 14).map((art) => (
           <Card key={art.id} elevation={0} sx={{ m: 0.5 }} style={{ width: '100%', borderRadius: '5%' }}>
             <CardMedia sx={{ mt: 2 }} style={{ textAlign: 'center' }}>
-              <Image src={art.image} alt="finger" width={160} height={160}/>
+              <Image src={art.image} alt="finger" width={160} height={160} priority={true}/>
             </CardMedia>
             <CardContent display="flex">
               <Grid container>

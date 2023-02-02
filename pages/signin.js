@@ -21,7 +21,7 @@ import bg from '../public/images/signin-image.png';
 import googleImage from '../public/icons/icons8-google.svg';
 import GoogleIcon from '@mui/icons-material/Google';
 import Image from 'next/image';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -31,39 +31,21 @@ import { Formik, Form } from 'formik';
 import * as EmailValidator from "email-validator";
 
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 
 
 
 
 const SignIn = () => {
-    const { data: session } = useSession();
-    console.log();
 
+    const router = useRouter();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log(data.get('email'));
         console.log(data.get('password'));
-        localStorage.setItem('Email', data.get('email'));
-        localStorage.setItem('Password', data.get('password'));
-        if (localStorage.getItem('Email').length > 0) {
-            Router.push('/');
-        }
-        else return false;
     };
 
     const [passwordType, setPasswordType] = useState("password");
@@ -111,9 +93,8 @@ const SignIn = () => {
                     </Stack>
 
                     <Stack alignItems="center" justifyContent="center" marginTop='5vh' >
-                        <Button variant="outlined" onClick={() => signIn()} style={{ background: '#eaeef7', border: 'none' }}>
-                            <Image src={googleImage} height={15}></Image>
-                            {/* <GoogleIcon style={{ color: '#A3AED0', height: '2vh' }} /> */}
+                        <Button variant="outlined" onClick={() => signIn('google', { callbackUrl: 'https://nextjs-nu-henna-73.vercel.app/' })} style={{ background: '#eaeef7', border: 'none' }}>
+                            <Image alt="GoogleImage" src={googleImage} height={15}></Image>
                             <Typography variant="caption" color='#2B3674' style={{ marginLeft: '1rem' }} >
                                 Sign in with google
                             </Typography>
@@ -154,6 +135,9 @@ const SignIn = () => {
                                     console.log(values);
                                     localStorage.setItem('Email', values.email);
                                     localStorage.setItem('Password', values.password);
+                                    if(values.email && values.password){
+                                        router.push('/');
+                                    }
                                     
                                 }, 500);
                             }}
@@ -265,7 +249,7 @@ const SignIn = () => {
 
 
                 <Grid item xs={0} sm={0} md={6} lg={6} xl={6} >
-                    <Image src={bg} height={600} width={550}></Image>
+                    <Image priority={true} alt='bgImage' src={bg} height={600} width={550}></Image>
                 </Grid>
             </Grid>
         </Box >

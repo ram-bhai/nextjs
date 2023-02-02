@@ -174,6 +174,7 @@ const Profile = () => {
             }}>
               <CardContent>
                 <Image
+                alt='profile'
                   src={profile}
                   height={100} width={100}
                   style={{
@@ -275,10 +276,10 @@ const Profile = () => {
               </CardContent>
               <Box style={{ margin: 20 }}>
                 <Grid container>
-                  <Grid items xs={8} color="#A3AED0">
+                  <Grid item xs={8} color="#A3AED0">
                     {progress} Gb
                   </Grid>
-                  <Grid items xs={4}>
+                  <Grid item xs={4}>
                     <Box sx={{ textAlign: 'end', color: '#A3AED0' }}>
                       {total} Gb
                     </Box>
@@ -356,7 +357,7 @@ const Profile = () => {
                             </Typography>}
                           />
                           <CardContent>
-                            <Image src={imageUrl} alt={selectedImage.name} height={100} width={100} />
+                            <Image alt="selectedImage" src={imageUrl} alt={selectedImage.name} height={100} width={100} />
                           </CardContent>
                         </Card>
                       </CardContent>
@@ -416,7 +417,7 @@ const Profile = () => {
                     <Card elevation={6}>
                       <CardHeader
                         avatar={
-                          <Image src={projectPic1} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                          <Image alt="projectPic1" src={projectPic1} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
                         }
                         action={
                           <IconButton aria-label="settings">
@@ -444,7 +445,7 @@ const Profile = () => {
                     <Card elevation={6}>
                       <CardHeader
                         avatar={
-                          <Image src={projectPic2} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                          <Image alt="projectPic2" src={projectPic2} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
                         }
                         action={
                           <IconButton aria-label="settings">
@@ -472,7 +473,7 @@ const Profile = () => {
                     <Card elevation={6}>
                       <CardHeader
                         avatar={
-                          <Image src={projectPic3} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
+                          <Image alt="projectPic3" src={projectPic3} alt="project pic" height={54} width={54} style={{ borderRadius: '20%' }} />
                         }
                         action={
                           <IconButton aria-label="settings">
@@ -620,7 +621,7 @@ const Profile = () => {
                     {
                       Object.keys(state).map((key, index) => {
                         return (
-                          < FormControlLabel sx={{ color: '#2B3674' }}
+                          < FormControlLabel key={index} sx={{ color: '#2B3674' }}
                             control={
                               <IOSSwitch sx={{ m: 1 }} checked={state[index]?.[key]} onChange={handleChange} name={key} />
                             }

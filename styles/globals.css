@@ -12,6 +12,19 @@ body {
     padding: 0 !important;
 }
 
+.css-cc01sb{
+    background-color: #eaeef7;
+}
+
+.css-rfuczr{
+    height: 20px;
+    width: 20px;
+    font-size: 0.5rem;
+    background-color: #A3AED0;
+    color: #2b3674;
+    border-radius: 50%;
+}
+
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
     border-width: 0;
 }
@@ -83,6 +96,10 @@ body {
 }
 .css-kf45sl-MuiButtonBase-root-MuiIconButton-root:hover{
     background: none !important;
+}
+
+.rdrNextPrevButton  {
+    display:none !important;
 }
 
 

@@ -221,7 +221,7 @@ export default function ComplexTableDash() {
 
   return (
     
-          <Card elevation={3} style={{ borderRadius: '10px'}}>
+          <Card elevation={0} style={{ borderRadius: '10px'}}>
             <EnhancedTableToolbar />
             <TableContainer>
               <Table>
@@ -255,7 +255,7 @@ export default function ComplexTableDash() {
                           >
                             {row.name}
                           </TableCell>
-                         <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.condition}{row.status}</TableCell>
+                         <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.status}</TableCell>
                           <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.date}</TableCell>
                           <TableCell align="center" style={{ borderBottom: "none" }}><BorderLinearProgress  variant="determinate" value={row.progress}/></TableCell>
                         </TableRow>

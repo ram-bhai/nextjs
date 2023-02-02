@@ -21,7 +21,7 @@ import Button from '@mui/material/Button';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-  return <Button {...other} />;
+  return <div {...other} />;
 })(() => ({
   marginLeft: 'auto',
 }));
@@ -33,7 +33,7 @@ const Kanban = () => {
       <Grid container rowSpacing={0.5} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
           <Box sx={{ background: '#fff', borderRadius: '5%'}}>
-            <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '100px',  background: 'white', }}>
+            <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '100px',  background: 'white' }}>
               <Toolbar sx={{ background: 'white', borderRadius: '10px' }}>
                 <Box sx={{ flexGrow: 1 }}>
                   <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Backlog</Typography>
@@ -50,7 +50,7 @@ const Kanban = () => {
                 </Tooltip>
               </Toolbar>
             </AppBar>
-            <Card  elevation={6} sx={{maxWidth:'auto',mt:2 }}>
+            <Card  elevation={3} sx={{maxWidth:'auto',mt:2 }}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -69,7 +69,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={2}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>
@@ -83,7 +83,7 @@ const Kanban = () => {
             </Card>
 
 
-            <Card sx={{maxWidth:'auto',mt:2}} elevation={6}>
+            <Card sx={{maxWidth:'auto',mt:2}} elevation={3}>
             <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -110,7 +110,7 @@ const Kanban = () => {
       </CardContent>
 
       <CardActions disableSpacing>
-      <AvatarGroup max={3}>
+      <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
@@ -124,7 +124,7 @@ const Kanban = () => {
       </CardActions> 
     </Card>
 
-    <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
+    <Card sx={{maxWidth:'auto',mt:2 }} elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -143,7 +143,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={1}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>
@@ -180,7 +180,7 @@ const Kanban = () => {
             </AppBar>
 
             
-    <Card sx={{maxWidth:'auto',mt:2 }}elevation={6}>
+    <Card sx={{maxWidth:'auto',mt:2 }}elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -199,7 +199,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={3}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
@@ -214,7 +214,7 @@ const Kanban = () => {
             </Card>
 
             
-    <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
+    <Card sx={{maxWidth:'auto',mt:2 }} elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -233,7 +233,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={1}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>
                 <ExpandMore>
@@ -245,7 +245,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2}} elevation={6}>
+            <Card sx={{maxWidth:'auto',mt:2}} elevation={3}>
             <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -272,7 +272,7 @@ const Kanban = () => {
       </CardContent>
 
       <CardActions disableSpacing>
-      <AvatarGroup max={2}>
+      <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>
@@ -290,7 +290,7 @@ const Kanban = () => {
 
         <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
           <Box sx={{ background: '#fff', borderRadius: '5%' }}>
-          <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '100px',  background: 'white', }}>
+          <AppBar sx={{ position: 'relative', boxShadow: 'none', borderRadius: '100px',  background: 'white'}}>
               <Toolbar sx={{ background: 'white', borderRadius: '10px' }}>
                 <Box sx={{ flexGrow: 1 }}>
                   <Typography variant='h6' fontWeight='bold' color='#2B3674' noWrap>Done</Typography>
@@ -308,7 +308,7 @@ const Kanban = () => {
               </Toolbar>
             </AppBar>
 
-            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -327,7 +327,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={1}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>
                 <ExpandMore>
@@ -339,7 +339,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -358,7 +358,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={3}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
@@ -372,7 +372,7 @@ const Kanban = () => {
               </CardActions>
             </Card>
 
-            <Card sx={{maxWidth:'auto',mt:2 }} elevation={6}>
+            <Card sx={{maxWidth:'auto',mt:2 }} elevation={3}>
               <CardHeader
                 action={
                   <IconButton aria-label="Edit">
@@ -391,7 +391,7 @@ const Kanban = () => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <AvatarGroup max={1}>
+                <AvatarGroup>
                   <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="https://randomuser.me/api/portraits/men/4.jpg" />
                   <Avatar sx={{ width: 24, height: 24 }} alt="Travis Howard" src="https://randomuser.me/api/portraits/men/4.jpg" />
                 </AvatarGroup>

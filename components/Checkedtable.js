@@ -113,7 +113,7 @@ function EnhancedTableHeads(props) {
                     <TableCell
                         key={headCell.id}
                         align='center'
-                        padding='2'
+                        padding='normal'
                         sortDirection={orderBy === headCell.id ? order : false}
                         style={{ borderBottom: "none", color: "#A3AED0", p: 0 }}
                     >
@@ -140,7 +140,6 @@ function EnhancedTableHeads(props) {
 EnhancedTableHeads.propTypes = {
     numSelected: PropTypes.number.isRequired,
     onRequestSort: PropTypes.func.isRequired,
-    onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.oneOf(['asc', 'desc']).isRequired,
     orderBy: PropTypes.string.isRequired,
 };

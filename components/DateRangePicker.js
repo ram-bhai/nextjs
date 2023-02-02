@@ -4,6 +4,8 @@ import format from 'date-fns/format'
 import { addDays } from 'date-fns'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
+import  Box  from '@mui/material/Box';
+import Card from '@mui/material/Card';
 
 
 const DateRangePickerComp = () => {
@@ -18,20 +20,17 @@ const DateRangePickerComp = () => {
 
   
   return (
-    <div className="calendarWrap">
-      <div>
+    
+      <Card elevation={0} style={{borderRadius:'10px'}}>
           <DateRange
             onChange={item => setRange([item.selection])}
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             ranges={range}
             months={1}
-            direction="horizontal"
-           
-          />
-      </div>
-
-    </div>
+            direction="horizontal"           
+            />    
+      </Card>
   )
 }
 

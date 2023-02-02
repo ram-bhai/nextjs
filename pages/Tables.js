@@ -130,7 +130,7 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             align='center'
-            padding='0.5'
+            padding="normal"
             sortDirection={orderBy === headCell.id ? order : false}
             style={{borderBottom: "none", color:"#A3AED0"}}
           >

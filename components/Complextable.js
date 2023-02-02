@@ -38,23 +38,12 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 function createData(name, status, date, progress) {
-  const condition = status =>{
-  if(status === "Approved"){
-    return <CheckCircleRoundedIcon style={{fill:'#05CD99',maxHeight: '15px'}}/>
-  }
-  if(status === "Disable"){
-    return <CancelSharpIcon style={{fill:'#EE5D50', maxHeight:'15px'}}/>
-  }
-  if(status === "Error"){
-    return <InfoSharpIcon style={{fill:'#FFCE20', maxHeight:'15px'}}/>
-  }
-}
+  
   return {
     name,
     status,
     date,
-    progress,
-    condition
+    progress
   };
 }
 
@@ -255,7 +244,7 @@ export default function Complextable() {
                           >
                             {row.name}
                           </TableCell>
-                         <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.condition}{row.status}</TableCell>
+                         <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.status}</TableCell>
                           <TableCell align="center" style={{ color: "#2B3674", fontWeight: "Bold", borderBottom: "none" }}>{row.date}</TableCell>
                           <TableCell align="center" style={{ borderBottom: "none" }}><BorderLinearProgress  variant="determinate" value={row.progress}/></TableCell>
                         </TableRow>

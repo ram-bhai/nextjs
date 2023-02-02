@@ -63,7 +63,7 @@ const Item = styled(Box)(({ theme }) => ({
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-  return <Button {...other} />;
+  return <div {...other} />;
 })(() => ({
   marginLeft: 'auto',
 }));
@@ -91,7 +91,7 @@ export default function Home() {
 
   return (
     <>
-      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2), }}>
+      <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2)}}>
         <Grid container rowSpacing={0.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
           <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
             <Box sx={{
@@ -189,7 +189,7 @@ export default function Home() {
                   </Typography>
                 </Typography>
               </div>
-              <Image src={flag} alt="flag" height={30} width={30} borderRadius='50%' />
+              <Image src={flag} alt="flag" height={30} width={30} />
               <IconButton>
                 <ExpandMoreIcon />
               </IconButton>
@@ -312,7 +312,7 @@ export default function Home() {
 
                 </Grid>
                 <Grid item lg={9} xs={9} sm={9} md={9} xl={9}>
-                  <Box >
+                  <Box>
                     <LineChart />
                   </Box>
                 </Grid>
@@ -362,19 +362,17 @@ export default function Home() {
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
           <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
-            <Box>
               <Box sx={{
                 height: '100%',
               }}>
                 <CheckedTableDash />
               </Box>
-            </Box>
+           
           </Grid>
 
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
             <Box sx={{
-              width: 'auto',
               height: '100%',
               background: '#fff',
             borderRadius:'10px'
@@ -449,7 +447,7 @@ export default function Home() {
       <Box sx={{ display: 'flex', padding: (theme) => theme.spacing(2) }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
           <Grid item lg={6} xs={12} sm={12} md={6} xl={6}>
-            <Box>
+            
               <Box sx={{
                 height: '100%',
                 background: '#fff',
@@ -458,7 +456,7 @@ export default function Home() {
                 alignItems: 'center'
               }}>
                 <ComplexTableDash />
-              </Box>
+              
             </Box>
           </Grid>
 
@@ -480,7 +478,7 @@ export default function Home() {
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
 
-            <Box sx={{
+            <Box className="calendarWrap" sx={{
               height: '100%',
               background: '#fff',
               borderRadius: '10px',
@@ -505,7 +503,7 @@ export default function Home() {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <Card sx={{ borderRadius: '15%' }} elevation={0}>
+              <Card sx={{ borderRadius: '10px' }} elevation={0}>
                 <CardHeader
                   avatar={
                     <Box sx={{
@@ -562,8 +560,8 @@ export default function Home() {
                     <Avatar src='https://randomuser.me/api/portraits/men/33.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
                     <Avatar src='https://randomuser.me/api/portraits/women/79.jpg' sx={{ width: '20px', height: '20px' }}></Avatar>
                   </AvatarGroup>
-                  <ExpandMore>
-                  <Button variant='text' style={{ background: '#4318FF', borderRadius: '5px', color: 'white' }}>
+<ExpandMore>
+                  <Button variant='contained' style={{ background: '#4318FF', borderRadius: '4px', color: 'white'}}>
                     Get started
                   </Button>
                   </ExpandMore>
@@ -642,26 +640,10 @@ export default function Home() {
                       }
                     />
                   </Card>
-                  {/* <Card sx={{ borderRadius:'10px', marginTop:'6%'}} elevation={3}>
-                <CardHeader
-                  avatar={
-                    <Avatar src='https://randomuser.me/api/portraits/men/33.jpg'></Avatar>
-                  }
-                  action={
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon style={{ fill: '#A3AED0' }} />
-                    </IconButton>
-                  }
-                  title="Jason Statham"
-                  subheader="jr graphic designer"
-                />
-              </Card> */}
                 </CardContent>
               </Card>
             </Box>
           </Grid>
-
-
 
 
           <Grid item lg={3} xs={12} sm={6} md={3} xl={3}>
@@ -673,8 +655,8 @@ export default function Home() {
               alignItems: 'center'
             }}>
               <Card sx={{ borderRadius: '15%' }} elevation={0}>
-                <CardMedia>
-                  <Image src={fingerPrint} alt="finger" style={{ height: '13vh', margin: '5%' }} />
+                <CardMedia sx={{m:1}}>
+                  <Image src={fingerPrint} alt="finger"  />
                 </CardMedia>
                 <CardContent>
                   <Typography variant='h6' color='#2B3674' fontWeight='bold' marginLeft='5%' noWrap>

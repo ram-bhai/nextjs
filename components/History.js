@@ -56,8 +56,8 @@ const History = () => {
                     </Typography>
                 } />
             <CardContent>
-                {rows.map((row) => (
-                    <Card elevation={0} sx={{borderRadius: '3%' }}>
+                {rows.map((row,index) => (
+                    <Card key={index} elevation={0} sx={{borderRadius: '3%' }}>
                         <CardHeader
                             avatar={
                                 <Avatar
