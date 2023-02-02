@@ -61,7 +61,6 @@ body {
 }
 
 .rdrDateDisplayWrapper {
-   
     display: none !important;
 }
 
@@ -72,6 +71,9 @@ body {
     height: 20px;
     width: 20px;
     font-size: 0.6rem;
+}
+.css-1dmadst:hover{
+    background: none !important;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
