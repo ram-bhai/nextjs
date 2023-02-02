@@ -92,7 +92,7 @@ const SignIn = () => {
                         </Typography>
                     </Stack>
 
-                    <Stack alignItems="center" justifyContent="center" marginTop='5vh' >
+                    <Stack alignItems="center" justifyContent="center" marginTop='3%' >
                         <Button variant="outlined" onClick={() => signIn('google', { callbackUrl: 'https://nextjs-nu-henna-73.vercel.app/' })} style={{ background: '#eaeef7', border: 'none' }}>
                             <Image alt="GoogleImage" src={googleImage} height={15}></Image>
                             <Typography variant="caption" color='#2B3674' style={{ marginLeft: '1rem' }} >
@@ -101,12 +101,12 @@ const SignIn = () => {
                         </Button>
                     </Stack>
 
-                    <div style={{ marginTop: '5vh', color: '#A3AED0' }}>
+                    <div style={{ marginTop: '3px', color: '#A3AED0' }}>
                         <Divider variant='middle'>or</Divider>
                     </div>
 
 
-                    <Box sx={{ mt: 4 }}>
+                    <Box sx={{ mt: 1 }}>
                         <Formik
                             initialValues={{ email: "", password: "" }}
                         
@@ -153,7 +153,7 @@ const SignIn = () => {
                                     handleSubmit
                                 } = props;
                                 return (
-                                    <form onSubmit={handleSubmit} noValidate>
+                                    <form onSubmit={handleSubmit} noValidate autoComplete="off">
                                         <Stack style={{ marginLeft: '31%' }}>
                                             <label>Email<a style={{ color: '#4318FF' }}>*</a></label>
                                             <TextField
@@ -249,7 +249,7 @@ const SignIn = () => {
 
 
                 <Grid item xs={0} sm={0} md={6} lg={6} xl={6} >
-                    <Image priority={true} alt='bgImage' src={bg} height={600} width={550}></Image>
+                    <Image priority={true} alt='bgImage' src={bg} height={550} width={500}></Image>
                 </Grid>
             </Grid>
         </Box >
